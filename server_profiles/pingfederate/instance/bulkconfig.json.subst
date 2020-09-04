@@ -208,37 +208,6 @@
         },
         {
             "operationType": "SAVE",
-            "items": [{
-                "password": "${keyPairs_sslServer_items_tzzg0zaa8jht1li712bo5dby9_tzzg0zaa8jht1li712bo5dby9_password}",
-                "fileData": "${keyPairs_sslServer_items_tzzg0zaa8jht1li712bo5dby9_tzzg0zaa8jht1li712bo5dby9_fileData}",
-                "id": "tzzg0zaa8jht1li712bo5dby9"
-            }],
-            "resourceType": "/keyPairs/sslServer"
-        },
-        {
-            "operationType": "SAVE",
-            "items": [{
-                "activeRuntimeServerCerts": [{
-                    "location": "https://9a3a6953ebeb:9999/pf-admin-api/v1/keyPairs/sslServer/tzzg0zaa8jht1li712bo5dby9",
-                    "id": "tzzg0zaa8jht1li712bo5dby9"
-                }],
-                "activeAdminConsoleCerts": [{
-                    "location": "https://9a3a6953ebeb:9999/pf-admin-api/v1/keyPairs/sslServer/tzzg0zaa8jht1li712bo5dby9",
-                    "id": "tzzg0zaa8jht1li712bo5dby9"
-                }],
-                "adminConsoleCertRef": {
-                    "location": "https://9a3a6953ebeb:9999/pf-admin-api/v1/keyPairs/sslServer/tzzg0zaa8jht1li712bo5dby9",
-                    "id": "tzzg0zaa8jht1li712bo5dby9"
-                },
-                "runtimeServerCertRef": {
-                    "location": "https://9a3a6953ebeb:9999/pf-admin-api/v1/keyPairs/sslServer/tzzg0zaa8jht1li712bo5dby9",
-                    "id": "tzzg0zaa8jht1li712bo5dby9"
-                }
-            }],
-            "resourceType": "/keyPairs/sslServer/settings"
-        },
-        {
-            "operationType": "SAVE",
             "items": [{"staticJwksEnabled": false}],
             "resourceType": "/keyPairs/oauthOpenIdConnect"
         },
