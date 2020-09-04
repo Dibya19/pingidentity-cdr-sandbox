@@ -16,10 +16,12 @@ then
     curl -X PUT --header 'Content-Type: application/json' --header 'X-XSRF-Header: PingFederate' --data '@/opt/staging/hooks/licenseagree.json' https://localhost:9999/pf-admin-api/v1/license/agreement --insecure
     curl -X POST --header 'Content-Type: application/json' --header 'X-XSRF-Header: PingFederate' --data '@/opt/staging/hooks/createadmin.json' https://localhost:9999/pf-admin-api/v1/administrativeAccounts --insecure
     curl -X POST --basic -u Administrator:2FederateM0re --header 'Content-Type: application/json' --header 'X-XSRF-Header: PingFederate' --header 'X-BypassExternalValidation: true' --data '@/opt/out/instance/bulkconfig.json' https://localhost:9999/pf-admin-api/v1/bulk/import?failFast=false --insecure
-    mkdir /opt/out/instance/server/default/deploy/downloads
-    cp /opt/out/instance/bulkconfig.json /opt/out/instance/server/default/deploy/downloads/bulkconfig.json
-    #rm /opt/out/instance/bulkconfig.json
     test ${?} -ne 0 && kill 1
+else if test "${OPERATIONAL_MODE}" = "CLUSTERED_ENGINE"
+then
+    echo "INFO: Configuring engine node"
+    mkdir /opt/out/instance/server/default/data/drop-in-deployer
+    curl -X GET --basic -u Administrator:2FederateM0re --header 'Content-Type: application/zip' --header 'X-XSRF-Header: PingFederate' https://pingfederate-admin:9999/pf-admin-api/v1/configArchive/export  -L -o /opt/out/instance/server/default/data/drop-in-deployer/data.zip --insecure
 fi
 
 if test "${OPERATIONAL_MODE}" = "CLUSTERED_CONSOLE"
