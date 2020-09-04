@@ -248,11 +248,6 @@
                     "password": "${keyPairs_signing_items_85nv5o5p9pgodsne3w47n5hua_85nv5o5p9pgodsne3w47n5hua_password}",
                     "fileData": "${keyPairs_signing_items_85nv5o5p9pgodsne3w47n5hua_85nv5o5p9pgodsne3w47n5hua_fileData}",
                     "id": "85nv5o5p9pgodsne3w47n5hua"
-                },
-                {
-                    "password": "${keyPairs_signing_items_kx2oyou5shpok058oasgs8172_kx2oyou5shpok058oasgs8172_password}",
-                    "fileData": "${keyPairs_signing_items_kx2oyou5shpok058oasgs8172_kx2oyou5shpok058oasgs8172_fileData}",
-                    "id": "kx2oyou5shpok058oasgs8172"
                 }
             ],
             "resourceType": "/keyPairs/signing"
