@@ -22,8 +22,8 @@ fi
 if test "${OPERATIONAL_MODE}" = "CLUSTERED_ENGINE"
 then
     echo "INFO: Configuring engine node"
-    mkdir /opt/out/instance/server/default/data/drop-in-deployer
-    curl -X GET --basic -u Administrator:2FederateM0re --header 'Content-Type: application/zip' --header 'X-XSRF-Header: PingFederate' https://pingfederate-admin:9999/pf-admin-api/v1/configArchive/export  -L -o /opt/out/instance/server/default/data/drop-in-deployer/data.zip --insecure
+    curl -X GET --basic -u Administrator:2FederateM0re --header 'Content-Type: application/zip' --header 'X-XSRF-Header: PingFederate' https://pingfederate-admin:9999/pf-admin-api/v1/configArchive/export  -L -o data.zip --insecure
+    unzip -o -d /opt/out/instance/server/default/data data.zip
 fi
 
 if test "${OPERATIONAL_MODE}" = "CLUSTERED_CONSOLE"
