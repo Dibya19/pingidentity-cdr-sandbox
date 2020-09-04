@@ -338,6 +338,20 @@
         {
             "operationType": "SAVE",
             "items": [{
+                "current": {
+                    "encryptedKeyData": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiM21zQk5BR2xnbCIsInZlcnNpb24iOiIxMC4xLjAuOCIsInppcCI6IkRFRiJ9..siPtu_RSTdqF790J2vPMrQ.MX72mzsSJHmUGvjISa6fy_eAbCtJ8XtTsvRLimWeGap5fVdlB3Im5uLlZFDaJOpv.XflRPTWus98yS0N9VhJVew",
+                    "creationDate": "2019-11-29T03:32:02.142Z"
+                },
+                "pending": {
+                    "encryptedKeyData": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiM21zQk5BR2xnbCIsInZlcnNpb24iOiIxMC4xLjAuOCIsInppcCI6IkRFRiJ9..muLrjcX6wnU6XX1Q-7Gl8g.Zn3745SGQ4q4eQTLKmshgWR3-i-QqXtxjnlexkN220BSnbUBxJVu15q7MDTDiQjj.4Nqj6Z86NZCCc8DKjh-txg",
+                    "creationDate": "2019-11-29T03:32:02.142Z"
+                }
+            }],
+            "resourceType": "/serverSettings/systemKeys"
+        },
+        {
+            "operationType": "SAVE",
+            "items": [{
                 "dataStoreRef": {
                     "location": "https://ed3a35e1db94:9999/pf-admin-api/v1/dataStores",
                     "id": ""
