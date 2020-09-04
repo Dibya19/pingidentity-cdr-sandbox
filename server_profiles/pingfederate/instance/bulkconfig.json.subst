@@ -211,7 +211,7 @@
             "items": [{
                 "password": "${keyPairs_sslServer_items_tzzg0zaa8jht1li712bo5dby9_tzzg0zaa8jht1li712bo5dby9_password}",
                 "fileData": "${keyPairs_sslServer_items_tzzg0zaa8jht1li712bo5dby9_tzzg0zaa8jht1li712bo5dby9_fileData}",
-                "id": "ping"
+                "id": "tzzg0zaa8jht1li712bo5dby9"
             }],
             "resourceType": "/keyPairs/sslServer"
         },
