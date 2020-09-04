@@ -301,10 +301,10 @@
             "operationType": "SAVE",
             "items": [{
                 "current": {
-		    "keyData": "2FederateMore!"
+		    "keyData": "MkZlZGVyYXRlTTByZSE="
                 },
                 "pending": {
-                    "keyData": "2FederateM0re@"
+                    "keyData": "MkZlZGVyYXRlTTByZUA="
                 }
             }],
             "resourceType": "/serverSettings/systemKeys"
