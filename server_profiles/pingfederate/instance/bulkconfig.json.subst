@@ -300,20 +300,6 @@
         {
             "operationType": "SAVE",
             "items": [{
-                "current": {
-                    "creationDate": "2019-11-29T03:32:02.142Z",
-                    "encryptedKeyData": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiTGtQNmNTZHdvQiIsInZlcnNpb24iOiIxMC4wLjAuOSIsInppcCI6IkRFRiJ9..VIMSJ_sKZdpSWIt6WqTMOQ.qkeiRb-wcklhVtlojPGX7P1IPD36je6hHLe4HBJzV8lbXj3Y1W_xDOD-JIXk8RUT.uEHsh7vS9bFpeVPBW-EoQw"
-                },
-                "pending": {
-                    "creationDate": "2019-11-29T03:32:02.142Z",
-                    "encryptedKeyData": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiTGtQNmNTZHdvQiIsInZlcnNpb24iOiIxMC4wLjAuOSIsInppcCI6IkRFRiJ9..n-BNOEa7y8Iq4vQZeT0law.nW44QUSDb2GEi1d4E9BKY7wdJymTud4TayNi8wzq6cUaUPWAMqD8O1_3Ja90tlPa.theLr8nETUaTeBdkdH0o7g"
-                }
-            }],
-            "resourceType": "/serverSettings/systemKeys"
-        },
-        {
-            "operationType": "SAVE",
-            "items": [{
                 "dataStoreRef": {
                     "location": "https://9a3a6953ebeb:9999/pf-admin-api/v1/dataStores",
                     "id": ""
