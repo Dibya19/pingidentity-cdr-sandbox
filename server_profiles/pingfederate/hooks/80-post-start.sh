@@ -10,7 +10,7 @@
 
 if test "${OPERATIONAL_MODE}" = "CLUSTERED_CONSOLE" || test "${OPERATIONAL_MODE}" = "STANDALONE"
 then
-    cp /opt/out/instance/server/default/conf/data-default.zip /opt/out/instance/server/default/data/drop-in-deployer/data.zip
+#    cp /opt/out/instance/server/default/conf/data-default.zip /opt/out/instance/server/default/data/drop-in-deployer/data.zip
     echo "INFO: waiting for PingFederate to start before importing configuration"
     wait-for localhost:9999 -t 200 -- echo PingFederate is up
     #curl -X POST --basic -u Administrator:2Federate --header 'Content-Type: application/json' --header 'X-XSRF-Header: PingFederate' --data '@/opt/out/instance/bulkconfig.json' https://localhost:9999/pf-admin-api/v1/bulk/import --insecure
