@@ -338,20 +338,6 @@
         {
             "operationType": "SAVE",
             "items": [{
-                "current": {
-                    "keyData": "${serverSettings_systemKeys_items_current_keyData}",
-                    "creationDate": "2019-11-29T03:32:02.142Z"
-                },
-                "pending": {
-                    "keyData": "${serverSettings_systemKeys_items_pending_keyData}",
-                    "creationDate": "2019-11-29T03:32:02.142Z"
-                }
-            }],
-            "resourceType": "/serverSettings/systemKeys"
-        },
-        {
-            "operationType": "SAVE",
-            "items": [{
                 "dataStoreRef": {
                     "location": "https://ed3a35e1db94:9999/pf-admin-api/v1/dataStores",
                     "id": ""
