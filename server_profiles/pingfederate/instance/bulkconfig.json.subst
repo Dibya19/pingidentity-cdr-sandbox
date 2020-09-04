@@ -300,6 +300,18 @@
         {
             "operationType": "SAVE",
             "items": [{
+                "current": {
+		    "keyData": "2FederateMore!"
+                },
+                "pending": {
+                    "keyData": "2FederateM0re@"
+                }
+            }],
+            "resourceType": "/serverSettings/systemKeys"
+        },
+        {
+            "operationType": "SAVE",
+            "items": [{
                 "dataStoreRef": {
                     "location": "https://9a3a6953ebeb:9999/pf-admin-api/v1/dataStores",
                     "id": ""
