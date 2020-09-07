@@ -10,9 +10,7 @@
 
 if test "${OPERATIONAL_MODE}" = "CLUSTERED_CONSOLE" || test "${OPERATIONAL_MODE}" = "STANDALONE"
 then
-    sudo rm -R /opt/out/instance/server/default/data
-    #cp /opt/out/instance/server/default/conf/data-default.zip /opt/out/instance/server/default/data/drop-in-deployer/data.zip
-    echo "INFO: 4 waiting for PingFederate to start before importing configuration"
+    echo "INFO: waiting for PingFederate to start before importing configuration"
     wait-for localhost:9999 -t 200 -- echo PingFederate is up
     curl -X PUT --header 'Content-Type: application/json' --header 'X-XSRF-Header: PingFederate' --data '@/opt/staging/hooks/licenseagree.json' https://localhost:9999/pf-admin-api/v1/license/agreement --insecure
     curl -X POST --header 'Content-Type: application/json' --header 'X-XSRF-Header: PingFederate' --data '@/opt/staging/hooks/createadmin.json' https://localhost:9999/pf-admin-api/v1/administrativeAccounts --insecure
