@@ -995,14 +995,6 @@
                             "claims_sharingDurationExpiresAt": {
                                 "source": {"type": "ADAPTER"},
                                 "value": "claims_sharingDurationExpiresAt"
-                            },
-                            "claims_refreshTokenExpiresAt": {
-                                "source": {"type": "ADAPTER"},
-                                "value": "claims_refreshTokenExpiresAt"
-                            },
-                            "claims_persistentGrantLifetimeMinutes": {
-                                "source": {"type": "ADAPTER"},
-                                "value": "claims_persistentGrantLifetimeMinutes"
                             }
                         },
                         "attributeSources": [],
