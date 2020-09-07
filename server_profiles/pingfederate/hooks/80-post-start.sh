@@ -22,13 +22,7 @@ fi
 
 if test "${OPERATIONAL_MODE}" = "CLUSTERED_ENGINE"
 then
-    echo "INFO: Configuring engine node"
-    echo "Downloading data.zip from the PF Console."
-
-    # PF Engines are supposed to download config from the console over jgroups, but this approach may be more robust
-    # We need to find a better way to distribute the data.zip without requiring admin credentials
-#    curl -X GET --basic -u Administrator:2FederateM0re --header 'Content-Type: application/zip' --header 'X-XSRF-Header: PingFederate' https://pingfederate-admin:9999/pf-admin-api/v1/configArchive/export  -L -o data.zip --insecure
-#    unzip -o -d /opt/out/instance/server/default/data data.zip
+    echo "INFO: Configuring engine node - Engine nodes should receive config from the cluster"
 fi
 
 if test "${OPERATIONAL_MODE}" = "CLUSTERED_CONSOLE"
