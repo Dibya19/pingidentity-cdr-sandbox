@@ -73,7 +73,7 @@
                     "type": "STRING"
                 },
                 {
-                    "stringValue": "ou=oauthClients,dc=example,dc=com",
+                    "stringValue": "ou=oauthClients,${USER_BASE_DN}",
                     "id": "SearchBase",
                     "type": "STRING"
                 }
@@ -103,7 +103,7 @@
                     "type": "STRING"
                 },
                 {
-                    "stringValue": "ou=grants,dc=example,dc=com",
+                    "stringValue": "ou=grants,${USER_BASE_DN}",
                     "id": "SearchBase",
                     "type": "STRING"
                 }
@@ -170,7 +170,7 @@
                     "type": "STRING"
                 },
                 {
-                    "stringValue": "ou=sessions,dc=example,dc=com",
+                    "stringValue": "ou=sessions,${USER_BASE_DN}",
                     "id": "SearchBase",
                     "type": "STRING"
                 }
@@ -201,41 +201,37 @@
         {
             "operationType": "SAVE",
             "items": [{
-                "fileData": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZoVENDQTIyZ0F3SUJBZ0lJRlVZWmt2LzRCOVV3RFFZSktvWklodmNOQVFFTEJRQXdlREVMTUFrR0ExVUVCaE1DUVZVeEREQUsKQmdOVkJBZ1RBMVpKUXpFU01CQUdBMVVFQnhNSlRXVnNZbTkxY201bE1RMHdDd1lEVlFRS0V3UkJVRUZETVJZd0ZBWURWUVFMRXcxUQphVzVuSUVsa1pXNTBhWFI1TVNBd0hnWURWUVFERXhkd2Eya3RaR0YwWVRZeExuQnBibWRoY0dGakxtTnZiVEFlRncweU1EQTFNVGt3Ck5UTTBNakphRncwek1EQTFNVGN3TlRNME1qSmFNSGd4Q3pBSkJnTlZCQVlUQWtGVk1Rd3dDZ1lEVlFRSUV3TldTVU14RWpBUUJnTlYKQkFjVENVMWxiR0p2ZFhKdVpURU5NQXNHQTFVRUNoTUVRVkJCUXpFV01CUUdBMVVFQ3hNTlVHbHVaeUJKWkdWdWRHbDBlVEVnTUI0RwpBMVVFQXhNWGNHdHBMV1JoZEdFMk1TNXdhVzVuWVhCaFl5NWpiMjB3Z2dJaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQ0R3QXdnZ0lLCkFvSUNBUUNNMGxVSXRlcmZUV21JREx1SS82ZmdBTWhWRU40TmNadVphNEVFN0tOSXB3S0xwWUZPbVV1dkdDR1JoajhHRHIyb1VoOXIKa1hUSHU1RW1ZNE85Q2Fxa05IL0E2WnhGbGt5RXhGMERSNFY1dVpydnMvQzRFKy9XWTFIZTRiRmJscmMxWGttZWJGYkFhS0JCNEpKNgpERVVYK3NlR2lndldmSzV1QmxrcnJOamhkRGtpUWF4VFl1dGFzOFYzZzNsYzgzS3NNVnJiaCtKZjFUbVVHWXRYWm5vbm1HWHdjWnE1Cmw4YW1TM01xSUVvbm8rWjFGS2EyN3hKSTFJeUdwejkrVlI0SnVJdW1GWDNya2lMMnkvb0EwdXY2VUdYSEs1ZU9OYjJYNWFBdFd5QmUKbDJaWnZGdFlub3VkSmhTMEd5d3MxaUladWlmNkt1VkxhYzB3VVU0ZEtacXZUbVNmVmNxaUxwZFJlaDhrcWRubnZZdERBZ0VoTjRGSQpqTzZ1MFZsRG5tQWlvQXViQ05lVGMrY3FYaDZDUituckZiRnFnSy9UeWVCbE42ZUx3OHg1ZUZsWExEQWJBUUplVGpKcS9QbEJEckdBCi9lMk5uYnBSU3d2QmhUT2RtOU95Wmg0d08ycndTMCtMTWpIc3RkNjc4MTlPZUVEYTF2OWJ4M1E4Mjk5Wnh4T1QrdGdIUmdGaEdkb1AKQUVJZ2t3QU8wWk5Wc1hRVnJDN2FqdHZrR0R3Vno2WHZoQkgyUmhRNHAxUDJhYkcvd01BZjBEdUlmanRDQU5oNXJUWDVQL2EvUnVKVgpOOU5FOGI0RWZwaTZJOXZDWmZtc3pCYTR1WVNqMktUTE9TYWNCSWY5SktnYlo4TVE4SW5kb2xDdWExS1hTTk9Nb0RORjR0K2xwdDl1CkdkWVNqd0lEQVFBQm94TXdFVEFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUNBUUI0QTIxc2pnNUoKeExQR01uVkJSVmludGwyWmFIZGdXdkl6NGUyVUdpNCt6WmxLeW8yWVBJWlJ3ekY1NDJOMkJ0SjVmMjgreXRPWk0zQi8vVWpyRUQzbgpmQWF4UThsYlRPQ1RzZ3M0eGEvVHp3eWtkVTkvZWFUOUhPRTJtUVE0UldDNGZNTGt4dEwvVjdQQytrd29xVUc1MVJsaW9SMnZTK3hvClI2S0s5N1ZwYzN2RCtqWUlncXZveVhlQ2hBVFlOSUlSZmk1NW1KQy9VdGFQc3pJQ04rWERhME4vVDBlRTlVNGpVemx0eGQ5TlR3UzQKaWtzVjdFUGM1U3RvVTV4aUtvaVlJdkxSVnpFbUhUMFYxeEt6VDJSRmVJSkhkSndxcGpqeVllZjNJMzFPaVFwSEVMWEVkWVl4c1pGTApwQWJYa1ZVTzk5R282c0RlRHBvWnk4NDNaQ2doRlQ4QTRNalNISUF3U29nWVo3ejN3VGZqR0JSd1l5cVdXaW9BcC9ILzd1d0RCSG5BCjhPYXhEWEVEZTJ1K1dTWnlkai8yUEQ5R0FBOFZpVndWbjJZYmZuSkE4bEtFTy80ZlBBSWEvb00xMk5HRDBBaWdBQkNrWHNROVNCck8KWjRud0JsZTNpeWdzSnZCaHFBUFZFMHJ0MitHMzFLZi90TksyeVlZNHM4WEZFQXhGR0xBN2FyM3ErYWlCL2dDSUpFeVh6Y2FiWlRmdQo4dzE4UDJxdkNxUHlrRWY0cU14V2VjUXFpM2Zpb1B3M21ZM1pSRG1UWnAzVlhDakdTd2k3TVdJcS9sNnRHMGw3Q3o4dlREbFNaQVVBCmoxcU1HTmhBenhqcmZ6bHdMTkpSbGd5SU9XeS9JMXRLcSt5cVY2Y0E2ekZGTml3SkYzSmhqTzRvSDlEUG5YalByQT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                "fileData": "${certificates_ca_items_a7dx4sc2k4adq7187k9pa7io5_a7dx4sc2k4adq7187k9pa7io5_fileData}",
                 "id": "a7dx4sc2k4adq7187k9pa7io5"
             }],
             "resourceType": "/certificates/ca"
         },
         {
             "operationType": "SAVE",
-            "items": [
-                {
-                    "password": "2FederateM0re",
-                    "fileData": "MIIJ7wIBAzCCCagGCSqGSIb3DQEHAaCCCZkEggmVMIIJkTCCBWUGCSqGSIb3DQEHAaCCBVYEggVSMIIFTjCCBUoGCyqGSIb3DQEMCgECoIIE+zCCBPcwKQYKKoZIhvcNAQwBAzAbBBTzOjic5FqmNUMtoiW5WfuMJSsYnAIDAMNQBIIEyPHHzNdVTpREl48D711o2XoiJvjNufNCIfupL46+Xa6SJCKgvjKnjgAXThV1JgiDodzZAtKM3H9RhTBnfC1wtmKgJiZZ2a9jxfL3Jox9Y+ExTFXOcxO27QN\\/nA2U9YEHM4dkbGCeUIEONnrt+xQGkYFWbg1JLCWeqjMFmsObNDySrtgc3PR2ktxCAgeTHMEkAQRq+\\/AlHmtXIBC2Ni3tBq\\/FdDsBcrR0+HWoGtqFg1JXJwY1Mf2nhU5\\/\\/4JZXm4cwMNoQVFJ55NXdMqfsuYue8ayoWSTmi45ZFFfXipU92pkXsTS4W+lkYzeNn0bi+Pmj4flZlACYdlvsum0bbm2r5olHySf8i+WUw4DGRknVrlLu43py7fpXcJny2AQs6v7DJk32XfpBJdvtbGfv6J7dYSzoiobTvsz1kVBWYeTo0j6RHIeEC5PTPCU6mrdTabt1WUvZRflkP2E0zWOvsAe6GY6Rug8fMT++aAKaBT5TUZxmz0Q3kWNKAqoEGm7wLenGAMNEThTV+L1Pz8hvBXuQLEr6mpbKVwb8uiarfrvlhAPv5NJd8g3rp\\/QqnPHdzxfIpSPv1nJmZCXyBH18MgB9LhMJWAbQMIyByEhmwI\\/OnTL8PqOrw1wWZvhNpg1hHJ9\\/JXs86d9bsK3JfVv9NEG3z4E1ZTtAyXu7bkmfavYpPiWbgWCs\\/i\\/445RF4h\\/8TbYq3Spfo9JPCnD0O8Hb13GBpEXpjugLqhv2HCrdAGGQ34pvO1Euisz+CIqdOYHWHbtrc3V64ggc+mIXrkbt8CTK4jGzAgfZymsMR9e7YRHL8prsRVkx5DrQFIpJ8+0LRMvHbZ0aSK3DnqUItiSyjZupKNFGkjUS6\\/kMyhntzJ2HRzFNF8pQtGwRkPGiOzI8i2Mz+NDZMVY7K0ueP2FQPdVjkId1oc7SjHNtYyHQFa0pzdb1fCHRAa4OfAHbSIe5siK6kktnYLL7N3ClMIO0aI8eKgbn\\/nzV8OWaHJSu0aDCSWNDWZ83Eb9pC+khwahwcWQe9GmLBkvBfObmPGyVLHc2mlRqd1hsz98c65ujDIMZmraT53J8PRUKmhW3X6Zf1Gh3NLG1m4DqF5N18mHAkOjUzXghjZERQRMedr6zr5jMunGA5YkC2E7e8HoiZoiwRagHCpO\\/XsT81nglFS1442WtbQ\\/2jbB+KK3jAQpSS6lK1I\\/mAzR+oZaH3JtmFjlFd1m9AztAQaqRLdWbdWWXHECRcOh3X0cuhKGBr6fCoCXYpiwCQ+AsS3CACvMsKZFbny236npZnKhmM97bcIlf1bcQSnIyYjMtJhZpUD8+wRIAZRzb9eYuCIH\\/bocr0aN2uvjou50DPBlorqEqHzr2tnQ5EpESBMK08GlzvCdBFhjcJn6auGKo\\/auQRGs7xn7u4UHVKbVahwIV\\/lJeH9MhyTdbk9eGKqwojeHT2RmAcryTIEYNOs+1okIFvCW7D\\/JSDO7xmEgYbEbYTvp+yBQKHiKLENQfd3JtoEwTWGTYoq2p6TdHacW6Pl91PpbLA9z8TDkpMkJqCPqDTm+187NyX3AaBc1LmmrF2ABQJD261kl9OSCzh3+E5A8BJ+mFxZBgZmskKF4bx9yM22ouJ8LYh9PITZFUfm7evWfhjE8MBcGCSqGSIb3DQEJFDEKHggAcABpAG4AZzAhBgkqhkiG9w0BCRUxFAQSVGltZSAxNTk5MjE5NzgxODM5MIIEJAYJKoZIhvcNAQcGoIIEFTCCBBECAQAwggQKBgkqhkiG9w0BBwEwKQYKKoZIhvcNAQwBBjAbBBQDcKXHXaxOFobC9ycQSS6rMuigDQIDAMNQgIID0N4vf\\/hHfiXADaZDhNA12xcfLcqSB0k15qNyasamnGOBj6oajUN28ZHWM\\/7vTYAIQhb8RmbEUlO6I4iAoFQ8Gx5IZ78Ok46RuLIabGpTMaxNKtoE7GLAo96kjlYuRTNzoUqjRv5xIYFFMHRLJmq9JmjG2bylSA29hJI2yubjBkSPqE8APLGwfbBkhgRnH9zbaM42qdHgs1howyths8ymvvpuzibUinwAcKg+6Gi7GmDt2m7DvAh39Xh1tfF08V9R3m51vMl360Ostxz6OP34GF0vGVTS8kExMinG3aEsJRiy7eSCgTf3o2ZUxG9pPjhzjRhhEk6diu4Q0hspfEMeFZutLxOoxJ1gRYz91I7gv10ShopYqF7MrmIfgML0023Pru8LNP6Rrf6e2UanqpS9EUclQ\\/RS3iFtU\\/u3578SwRhocbAOYz5WA7tbo9hig27NeQRPw3uQ2DxkHsTes36C\\/y4saR+e9ef3Ubr\\/wETyzEua7J7Wzt1VJOaJPgMX34CrMIofj4+l8oNR6800fuGsfINZd4aa20RCH5g\\/hkxzPsLQ\\/blDm5LIPk+QnEA+8mBoR\\/+kymM7L5FmXikKmSrXVt0MMNeCYEVxt9SLkrfAgsZaFelBlZ73wOe8RKVHLwsIri599WMRdEdiuPiOvhGn+X15+tG+pYXcwgDsBJU+C5pqGH82U7sAZFQ0tTxY0QeN5RNZqMYv+M8jndCZyZCjSjkLV6fK4NpMWSkMgquMA3S6BRptMiC8+0SGwXxFbi51Y5qz3et7iwwHE3L5FFs5UW5BPSyg\\/0MKMeGc8mJFc0GIfHPxXDVm7EiaNWyBhrzWExYjOzGHAh5WZ5eUMRr33ZL39ZI0AuLRFoYG1E7Pv4U\\/dfCYIRESOIRy4Xnp34w6CV0FN2OevhQJmIYkOzgMEXgNUY+w6mgjCbXeCxIMXpcfsswFQZKZVydkSDx56dMJrIhhapHrt2lLb8p3FQs1poneNXqm8WiJWE9k\\/VYLbkQl0Ok8hUjmsVXlS6\\/GNzyZWE3oEV2tgJNOX6oMUG2v\\/jDe++SPyhf97oHOl08PMwJX2bW1tAP3Ejih2BtlVhV+7kDEwTyA14M7YYzP20j08CCkVyiatLlaoEN\\/Wq+ERetqRSmVxnNZZJ5KCgAt8KPkLLsDMYnx1+NjN2B+SKewWWqStc+C1hH\\/3wAR\\/ul7wZt5Kwo5MJ529eTWGQvt0DboV2QgjWV6hsbNTC6uQKpmsWyzqGcj2NiRqqAdo+BghtzycrFYe3sT5DUx1FJJRcgGmd9N2\\/ObKC7CI0Avh\\/nQyvEwPjAhMAkGBSsOAwIaBQAEFM+46ZeS6hpAxaFs7qRQbem75eErBBR0QCOki4LMSfU6PFv7Qj+cbZo3ZAIDAYag",
-                    "id": "wxom4n4v8ayu7yx47eqbj8bl0"
-                }
-            ],
+            "items": [{
+                "password": "${keyPairs_sslServer_items_wxom4n4v8ayu7yx47eqbj8bl0_wxom4n4v8ayu7yx47eqbj8bl0_password}",
+                "fileData": "${keyPairs_sslServer_items_wxom4n4v8ayu7yx47eqbj8bl0_wxom4n4v8ayu7yx47eqbj8bl0_fileData}",
+                "id": "wxom4n4v8ayu7yx47eqbj8bl0"
+            }],
             "resourceType": "/keyPairs/sslServer"
         },
         {
             "operationType": "SAVE",
             "items": [{
                 "activeRuntimeServerCerts": [{
-                    "location": "https://eab662c10965:9999/pf-admin-api/v1/keyPairs/sslServer/wxom4n4v8ayu7yx47eqbj8bl0",
+                    "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/keyPairs/sslServer/wxom4n4v8ayu7yx47eqbj8bl0",
                     "id": "wxom4n4v8ayu7yx47eqbj8bl0"
                 }],
-                "activeAdminConsoleCerts": [
-                    {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/keyPairs/sslServer/wxom4n4v8ayu7yx47eqbj8bl0",
-                        "id": "wxom4n4v8ayu7yx47eqbj8bl0"
-                    }
-                ],
+                "activeAdminConsoleCerts": [{
+                    "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/keyPairs/sslServer/wxom4n4v8ayu7yx47eqbj8bl0",
+                    "id": "wxom4n4v8ayu7yx47eqbj8bl0"
+                }],
                 "adminConsoleCertRef": {
-                    "location": "https://eab662c10965:9999/pf-admin-api/v1/keyPairs/sslServer/wxom4n4v8ayu7yx47eqbj8bl0",
+                    "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/keyPairs/sslServer/wxom4n4v8ayu7yx47eqbj8bl0",
                     "id": "wxom4n4v8ayu7yx47eqbj8bl0"
                 },
                 "runtimeServerCertRef": {
-                    "location": "https://eab662c10965:9999/pf-admin-api/v1/keyPairs/sslServer/wxom4n4v8ayu7yx47eqbj8bl0",
+                    "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/keyPairs/sslServer/wxom4n4v8ayu7yx47eqbj8bl0",
                     "id": "wxom4n4v8ayu7yx47eqbj8bl0"
                 }
             }],
@@ -245,9 +241,14 @@
             "operationType": "SAVE",
             "items": [
                 {
-                    "password": "2FederateM0re",
-                    "fileData": "MIIJjwIBAzCCCUgGCSqGSIb3DQEHAaCCCTkEggk1MIIJMTCCBWUGCSqGSIb3DQEHAaCCBVYEggVSMIIFTjCCBUoGCyqGSIb3DQEMCgECoIIE+zCCBPcwKQYKKoZIhvcNAQwBAzAbBBS2BRr5FhOr4UZQ3ogmjqN7zNw3RgIDAMNQBIIEyBlGsUAVvat4LdNGHNXMfoAJUduuGXPNMeH0g9t0fPvbUI5DJaa7t5AiCTcoSI6A2VQDCDQhTr5cfLd4wxGRjm6okrzL5EI0RfFXGg0YF9J\\/unL0qSgnNyPOqJvmHx615wPWVVo+rnjfPD10dkdsuzT7izgWa0\\/VXAUFk6Ho0Ou2DXjagXIK20UMs\\/AzgaLRy9K7GGxQuoCBgO0RPbfMuoavS9\\/eRBWoT5Es8JK51FRlUrigneQ8bcbx0lbBvv\\/M3CDv+c9DGt0tbDJLe58A6xbXx1Hv5ItxDuAu\\/rpznUdo1Ud+S40FkYfR5jta2a36UxpceGTNcWu8U5KjaCYuSNl5p7V2\\/Iz0Tt4WIOnuhFd4qZLdP48xkIPMYfylwPC3RNNfj6II2600Xdz721ztMpeMATX6jYdevgO8Bd2\\/2rRiZttnHtPpm85vHCVu+bFtH\\/zKfNmVO388wD0O34kxCC5C5J9svsYEU2tt2+\\/rfPIVgKSWD2jtSSJa1UDMvdGPZJ+XSAuDC\\/Cj2Bb+yWRErg4BL3AGP2TSyb4\\/i+w0\\/IdOxZpAAd+ptkOd+dvnKr3CZ+qdrMwq\\/qU9Bxwl66UjyCgy7N9rl52vJv2Ep6FULAq84WwIqtAxP9WfxojGmwns4lf6yts2lEFn3Nly5g2+T8l+AU1hiiXGj2kex39UiS\\/BrJp2BDW\\/jPbE\\/Ds3TwCJH3Wi9\\/vO+e34wop880W4sq+wn9HaRaTe1EkDB9drrYTV0W+8\\/o1BGIdCbTqzJVr7lCCQRx1nJC2nLWh+iisAFd7T6q8ExTElwTe5rTzIuaLlgM2sL1b\\/Ae44unfshe21QUMhnq8AMjA1+iCNEbfuti7BV5l11GF99mzY\\/caim0Manvo1bh9XQ7Vne1o1ZvMMlb\\/IzlCi1+fDmsuO9y+1Q+hwesac7enDY8g2P4Nfqyj7R2IATZn2UaU17h1cUSTRm\\/3yuxR28go2eIHYGtMWiRNSaXN+rJiVe1cvpegPsTSXRgRwzsV7N57DfDD3P3bxS\\/Nm3OxUAcZzx50z22Zi0KknE9IN50I8dPWi3bLDhU8mIRgl3HU3RWXIVFgv5lHl0bAyqrFJ2qEESwGbuGsR+0qSb8Blx7EgJG3pWmFuEiBq1jkoZPmbwk3d73Ewyv1PJBNq8in+CHX2uWRJK3M0RF51iG6hPKdhW4WPlS0We7qh3b600fZImULE0v2jotUQCbp70EGOLkN7r68BplWIQUjt9u7eO\\/D5dLQumopyVxsJqX7kR31O3HdlYXWl9kG0yEzY78PTg0zf4IIuE9VuyXVpIxRUrSuhoNgQWT1LGEHceHVlv15nJbEgBdREWrqWLHYSAxzGVWoAH701GSMelqkPJ7XISuPcoktuT3egcYx41vb27HD+aRR2GrxSIDHVV6+NLZliJUwoaXmjOw6JpVxefFk2APEb\\/SiuIrFBJPmn\\/Dop4qK0ViuU+1Voq1hmiRZUZB6BRlZCq83+rJwlaNfyBBqpIWmeTPvqFBHTI8ujRNLKEtMNpB5KjHvIPDtz1QkihIX4Art0YF26xFDtLsCSYAwCDkkmyzNHGy4YxNjBGSC5yuT0fTHW5vtlC0cInq1p7\\/am\\/wref3ptOHY+hndv5JWMpQrZBjE8MBcGCSqGSIb3DQEJFDEKHggAcABpAG4AZzAhBgkqhkiG9w0BCRUxFAQSVGltZSAxNTk5MjE5NzIzNjUxMIIDxAYJKoZIhvcNAQcGoIIDtTCCA7ECAQAwggOqBgkqhkiG9w0BBwEwKQYKKoZIhvcNAQwBBjAbBBTvDYI5LVlOu1YZWYZK\\/t06dyEKwQIDAMNQgIIDcEaQzmZuPLqiFJ60Spm+w1mFROjRPDRJc5jlsfBofAdddyAggdRzRAAvspOqzU+ddn12NlkNLtjlKv17L2dFt+hpP+D3VIWZ4Wi3zSTezq0piGXi0UodowPtSftH+QBV2zc2Wst9PK06gO4DMqLwmaQsCrt5RbJR7OPvonatYulJdecNTRR8NkIanYTA65yejyVU4rqBkUnhNr4UxUFd8Phz68VnvS3gp03rUgXkPIYMugQGROnbR37BqL9sqRa+Jw9LJhHeCw0RJeuUqmOaOQLndwZZCxdIiftaGgNTpuCzg8tfcByM25fK31emFTgfBtzIqBr09k0SBUZfdVTtbxuWbgJQ0ZM4gbeg4q5onI1dFv\\/J9Vr72XeFsf8HAJo7RmpyzscNPEdhakBAd0\\/wUlxvDsJ0wMluirrMMzzx+ewc+0FvhWjHM2sJfw3sBK+vbcuPGcvxojMcJ49O+eyqsIiENahwV3lDjsHByfjX0H9M1G+7WzPKFjCL6YP4a9\\/e2nqxL8Q\\/iGkgqSePmRIKHxbNBic+K\\/W5huvRI7jC4uDX2fswI728XM177R3RuoAG3fS7p7kzBYiVyuXEiT87Jl\\/wL7I8E5GTjKQyO\\/3LH169Mvw9iC5FSX+wJSquqQptz5APG+xhIrry5sY7w8nhlo3FPlSMxyBZMB+MJLcNcv2ziWUYTzFk6u2xQGYY\\/2wBYEpFWjt+GGBuPRNj9Ygt2TMc4cHpaRXX9b8aPE4J5jT9DUjcOGmjDVaWC+iVWHNtnizWs\\/A2KL4YxnyJFYxd+TCmpNrNAfMzl4Gmh2HUWDuTmt\\/3jod4JgNHfz8Kd5ullURmuuu9eOd60uab1OMMgkmx20jV7D7MpYcx\\/qCPA0Cgham7j8yCkv4XjMzHjLO+uGp4vOJqMYZgizWBCmxWC0MRnm9RaEdlR8QmZi\\/kSMytYpdQ6uEJEHWIMH5f1xQ6VzsOujlXIwf38j8lIg40hih3Ol4XOGaWomFt6uI27888\\/KIOHJ642+BqcS5lKtE8wENdaxcm0DCc1blrvngZQG7m6Jj29NUjQ5u0M13\\/BK\\/wbu+itvcmwNyLr9lIGNmwT44LnrgvYbAz0j+5YIBqO8HKTtx0wPEQpM0N\\/1ibUzn1ytEgbZqXvtikHjt9RFA3DmyioFvGuNvBTNsDLqHPDZowPjAhMAkGBSsOAwIaBQAEFHyABMOK\\/4aSx1O1gXsTNV+xHO96BBTABcAugUIrT8y2qwbUSGhbvROJxAIDAYag",
+                    "password": "${keyPairs_signing_items_85nv5o5p9pgodsne3w47n5hua_85nv5o5p9pgodsne3w47n5hua_password}",
+                    "fileData": "${keyPairs_signing_items_85nv5o5p9pgodsne3w47n5hua_85nv5o5p9pgodsne3w47n5hua_fileData}",
                     "id": "85nv5o5p9pgodsne3w47n5hua"
+                },
+                {
+                    "password": "${keyPairs_signing_items_kx2oyou5shpok058oasgs8172_kx2oyou5shpok058oasgs8172_password}",
+                    "fileData": "${keyPairs_signing_items_kx2oyou5shpok058oasgs8172_kx2oyou5shpok058oasgs8172_fileData}",
+                    "id": "kx2oyou5shpok058oasgs8172"
                 }
             ],
             "resourceType": "/keyPairs/signing"
@@ -269,7 +270,7 @@
                     "binaryAttributes": [],
                     "ldapType": "PING_DIRECTORY",
                     "type": "LDAP",
-                    "password": "2FederateM0re",
+                    "password": "${dataStores_items_LDAP_C29DCC21274C10A483A76237675C3A22715D638C_LDAP_C29DCC21274C10A483A76237675C3A22715D638C_password}",
                     "minConnections": 10,
                     "createIfNecessary": true,
                     "id": "LDAP-C29DCC21274C10A483A76237675C3A22715D638C",
@@ -290,6 +291,21 @@
                     "readTimeout": 3000,
                     "name": "pingdirectory",
                     "userDN": "cn=administrator"
+                },
+                {
+                    "maskAttributeValues": false,
+                    "connectionUrlTags": [{
+                        "connectionUrl": "jdbc:hsqldb:${pf.server.data.dir}${/}hypersonic${/}ProvisionerDefaultDB;hsqldb.lock_file=false",
+                        "defaultSource": true
+                    }],
+                    "password": "${dataStores_items_ProvisionerDS_ProvisionerDS_password}",
+                    "allowMultiValueAttributes": false,
+                    "driverClass": "org.hsqldb.jdbcDriver",
+                    "name": "ProvisionerDS (sa)",
+                    "connectionUrl": "jdbc:hsqldb:${pf.server.data.dir}${/}hypersonic${/}ProvisionerDefaultDB;hsqldb.lock_file=false",
+                    "id": "ProvisionerDS",
+                    "type": "JDBC",
+                    "userName": "sa"
                 }
             ],
             "resourceType": "/dataStores"
@@ -303,10 +319,10 @@
             "operationType": "SAVE",
             "items": [{
                 "federationInfo": {
-                    "saml2EntityId": "https://sso.data-holder.local",
+                    "saml2EntityId": "https://sso.pingapac.com",
                     "saml1xIssuerId": "",
                     "wsfedRealm": "",
-                    "baseUrl": "https://sso.data-holder.local",
+                    "baseUrl": "https://sso.pingapac.com",
                     "saml1xSourceId": ""
                 },
                 "contactInfo": {},
@@ -346,8 +362,21 @@
         {
             "operationType": "SAVE",
             "items": [{
+                "current": {
+                    "creationDate": "2019-11-29T03:32:02.142Z",
+                    "encryptedKeyData": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiTGtQNmNTZHdvQiIsInZlcnNpb24iOiIxMC4wLjAuOSIsInppcCI6IkRFRiJ9..VIMSJ_sKZdpSWIt6WqTMOQ.qkeiRb-wcklhVtlojPGX7P1IPD36je6hHLe4HBJzV8lbXj3Y1W_xDOD-JIXk8RUT.uEHsh7vS9bFpeVPBW-EoQw"
+                },
+                "pending": {
+                    "creationDate": "2019-11-29T03:32:02.142Z",
+                    "encryptedKeyData": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiTGtQNmNTZHdvQiIsInZlcnNpb24iOiIxMC4wLjAuOSIsInppcCI6IkRFRiJ9..n-BNOEa7y8Iq4vQZeT0law.nW44QUSDb2GEi1d4E9BKY7wdJymTud4TayNi8wzq6cUaUPWAMqD8O1_3Ja90tlPa.theLr8nETUaTeBdkdH0o7g"
+                }
+            }]
+        },
+        {
+            "operationType": "SAVE",
+            "items": [{
                 "dataStoreRef": {
-                    "location": "https://eab662c10965:9999/pf-admin-api/v1/dataStores",
+                    "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/dataStores",
                     "id": ""
                 },
                 "synchronizationFrequency": 60
@@ -357,12 +386,12 @@
         {
             "operationType": "SAVE",
             "items": [{
-                "password": "2FederateM0re",
+                "password": "${administrativeAccounts_items_Administrator_password}",
                 "roles": [
                     "USER_ADMINISTRATOR",
-                    "EXPRESSION_ADMINISTRATOR",
                     "ADMINISTRATOR",
-                    "CRYPTO_ADMINISTRATOR"
+                    "CRYPTO_ADMINISTRATOR",
+                    "EXPRESSION_ADMINISTRATOR"
                 ],
                 "auditor": false,
                 "description": "Initial administrator user.",
@@ -384,8 +413,8 @@
         {
             "operationType": "SAVE",
             "items": [{"virtualHostNames": [
-                "sso-admin.data-holder.local",
-                "sso.data-holder.local",
+                "sso-admin.pingapac.com",
+                "sso.pingapac.com",
                 "pingfederate",
                 "pingaccess"
             ]}],
@@ -474,7 +503,7 @@
                         },
                         {
                             "name": "Search Base",
-                            "value": "ou=people,dc=example,dc=com"
+                            "value": "ou=people,${USER_BASE_DN}"
                         },
                         {
                             "name": "Search Filter",
@@ -525,7 +554,7 @@
                 "name": "adminPCV",
                 "id": "adminPCV",
                 "pluginDescriptorRef": {
-                    "location": "https://eab662c10965:9999/pf-admin-api/v1/passwordCredentialValidators/descriptors/org.sourceid.saml20.domain.LDAPUsernamePasswordCredentialValidator",
+                    "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/passwordCredentialValidators/descriptors/org.sourceid.saml20.domain.LDAPUsernamePasswordCredentialValidator",
                     "id": "org.sourceid.saml20.domain.LDAPUsernamePasswordCredentialValidator"
                 },
                 "attributeContract": {
@@ -686,7 +715,7 @@
                     "name": "adminATM",
                     "id": "adminATM",
                     "pluginDescriptorRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/accessTokenManagers/descriptors/com.pingidentity.pf.access.token.management.plugins.JwtBearerAccessTokenManagementPlugin",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/accessTokenManagers/descriptors/com.pingidentity.pf.access.token.management.plugins.JwtBearerAccessTokenManagementPlugin",
                         "id": "com.pingidentity.pf.access.token.management.plugins.JwtBearerAccessTokenManagementPlugin"
                     },
                     "accessControlSettings": {
@@ -835,7 +864,7 @@
                     "name": "obATM",
                     "id": "obATM",
                     "pluginDescriptorRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/accessTokenManagers/descriptors/com.pingidentity.pf.access.token.management.plugins.JwtBearerAccessTokenManagementPlugin",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/accessTokenManagers/descriptors/com.pingidentity.pf.access.token.management.plugins.JwtBearerAccessTokenManagementPlugin",
                         "id": "com.pingidentity.pf.access.token.management.plugins.JwtBearerAccessTokenManagementPlugin"
                     },
                     "accessControlSettings": {
@@ -843,7 +872,7 @@
                         "allowedClients": []
                     },
                     "attributeContract": {
-                        "defaultSubjectAttribute": "sub",
+                        "defaultSubjectAttribute": "cdr_arrangement_id",
                         "coreAttributes": [],
                         "extendedAttributes": [
                             {"name": "sub"},
@@ -859,7 +888,7 @@
         {
             "operationType": "SAVE",
             "items": [{"defaultAccessTokenManagerRef": {
-                "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/accessTokenManagers/obATM",
+                "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/accessTokenManagers/obATM",
                 "id": "obATM"
             }}],
             "resourceType": "/oauth/accessTokenManagers/settings"
@@ -922,7 +951,7 @@
                     "name": "CDR - Consent",
                     "id": "cdrConsentAdapter",
                     "pluginDescriptorRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapter.idp.ExternalConsentPageAdapter",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapter.idp.ExternalConsentPageAdapter",
                         "id": "com.pingidentity.adapter.idp.ExternalConsentPageAdapter"
                     },
                     "attributeContract": {
@@ -979,6 +1008,14 @@
                             "claims_sharingDurationExpiresAt": {
                                 "source": {"type": "ADAPTER"},
                                 "value": "claims_sharingDurationExpiresAt"
+                            },
+                            "claims_refreshTokenExpiresAt": {
+                                "source": {"type": "ADAPTER"},
+                                "value": "claims_refreshTokenExpiresAt"
+                            },
+                            "claims_persistentGrantLifetimeMinutes": {
+                                "source": {"type": "ADAPTER"},
+                                "value": "claims_persistentGrantLifetimeMinutes"
                             }
                         },
                         "attributeSources": [],
@@ -1008,7 +1045,7 @@
                     "name": "CDR - Initiate Request",
                     "id": "cdrSelectorAdapter",
                     "pluginDescriptorRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapter.idp.CDRAdapterSelector",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapter.idp.CDRAdapterSelector",
                         "id": "com.pingidentity.adapter.idp.CDRAdapterSelector"
                     },
                     "attributeContract": {
@@ -1066,7 +1103,7 @@
                             },
                             {
                                 "name": "API KEY",
-                                "value": "2FederateM0re"
+                                "value": "${idp_adapters_items_clickatellAdapter_configuration_fields_API_KEY_value}"
                             },
                             {
                                 "name": "Allow dummy code",
@@ -1077,7 +1114,7 @@
                     "name": "General - SMS Verification",
                     "id": "clickatellAdapter",
                     "pluginDescriptorRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapter.idp.ClickatelSMSMFAAdapter",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapter.idp.ClickatelSMSMFAAdapter",
                         "id": "com.pingidentity.adapter.idp.ClickatelSMSMFAAdapter"
                     },
                     "attributeContract": {
@@ -1334,7 +1371,7 @@
                     "name": "Administrators - Verify Credentials",
                     "id": "htmlFormAdapterAdministrators",
                     "pluginDescriptorRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.htmlform.idp.HtmlFormIdpAuthnAdapter",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.htmlform.idp.HtmlFormIdpAuthnAdapter",
                         "id": "com.pingidentity.adapters.htmlform.idp.HtmlFormIdpAuthnAdapter"
                     },
                     "attributeContract": {
@@ -1398,13 +1435,13 @@
                             "binaryAttributeSettings": {},
                             "searchScope": "SUBTREE",
                             "dataStoreRef": {
-                                "location": "https://eab662c10965:9999/pf-admin-api/v1/dataStores/LDAP-C29DCC21274C10A483A76237675C3A22715D638C",
+                                "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/dataStores/LDAP-C29DCC21274C10A483A76237675C3A22715D638C",
                                 "id": "LDAP-C29DCC21274C10A483A76237675C3A22715D638C"
                             },
                             "description": "ldap",
                             "id": "ldap",
                             "type": "LDAP",
-                            "baseDn": "ou=people,dc=example,dc=com",
+                            "baseDn": "ou=people,${USER_BASE_DN}",
                             "searchFilter": "uid=${subject}"
                         }],
                         "issuanceCriteria": {"conditionalCriteria": []}
@@ -1433,7 +1470,7 @@
                     "name": "CDR - Get Account Number",
                     "id": "identityFirstAdapter",
                     "pluginDescriptorRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.identifierfirst.idp.IdentifierFirstAdapter",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/descriptors/com.pingidentity.adapters.identifierfirst.idp.IdentifierFirstAdapter",
                         "id": "com.pingidentity.adapters.identifierfirst.idp.IdentifierFirstAdapter"
                     },
                     "attributeContract": {
@@ -1483,7 +1520,7 @@
                         },
                         {
                             "name": "Pass Phrase",
-                            "value": "2FederateM0re"
+                            "value": "${sp_adapters_items_paragentless_configuration_fields_Pass_Phrase_value}"
                         },
                         {
                             "name": "Allowed Subject DN",
@@ -1539,7 +1576,7 @@
                 "id": "paragentless",
                 "targetApplicationInfo": {},
                 "pluginDescriptorRef": {
-                    "location": "https://eab662c10965:9999/pf-admin-api/v1/sp/adapters/descriptors/com.pingidentity.pf.adapters.referenceid.SpBackchannelReferenceAuthnAdapter",
+                    "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/sp/adapters/descriptors/com.pingidentity.pf.adapters.referenceid.SpBackchannelReferenceAuthnAdapter",
                     "id": "com.pingidentity.pf.adapters.referenceid.SpBackchannelReferenceAuthnAdapter"
                 },
                 "attributeContract": {
@@ -1666,7 +1703,7 @@
                     "authenticationSource": {
                         "type": "IDP_ADAPTER",
                         "sourceRef": {
-                            "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/cdrConsentAdapter",
+                            "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/cdrConsentAdapter",
                             "id": "cdrConsentAdapter"
                         }
                     },
@@ -1680,7 +1717,7 @@
                     "authenticationSource": {
                         "type": "IDP_ADAPTER",
                         "sourceRef": {
-                            "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/cdrSelectorAdapter",
+                            "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/cdrSelectorAdapter",
                             "id": "cdrSelectorAdapter"
                         }
                     },
@@ -1694,7 +1731,7 @@
                     "authenticationSource": {
                         "type": "IDP_ADAPTER",
                         "sourceRef": {
-                            "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/identityFirstAdapter",
+                            "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/identityFirstAdapter",
                             "id": "identityFirstAdapter"
                         }
                     },
@@ -1708,7 +1745,7 @@
                     "authenticationSource": {
                         "type": "IDP_ADAPTER",
                         "sourceRef": {
-                            "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/clickatellAdapter",
+                            "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/clickatellAdapter",
                             "id": "clickatellAdapter"
                         }
                     },
@@ -1752,7 +1789,7 @@
                 "authorizationCodeEntropy": 30,
                 "persistentGrantIdleTimeout": -1,
                 "rollRefreshTokenValues": true,
-                "allowedOrigins": ["https://test.data-holder.local"],
+                "allowedOrigins": ["https://test.pingapac.com"],
                 "allowUnidentifiedClientExtensionGrants": false,
                 "devicePollingInterval": 5,
                 "persistentGrantIdleTimeoutTimeUnit": "DAYS",
@@ -1985,7 +2022,7 @@
             "items": [
                 {
                     "authenticationPolicyContractRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/authenticationPolicyContracts/TkNJ3HMIIvIeeZEM",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/authenticationPolicyContracts/TkNJ3HMIIvIeeZEM",
                         "id": "TkNJ3HMIIvIeeZEM"
                     },
                     "attributeContractFulfillment": {
@@ -2019,7 +2056,7 @@
                 },
                 {
                     "authenticationPolicyContractRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/authenticationPolicyContracts/iQwSYDdExcmJaYk6",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/authenticationPolicyContracts/iQwSYDdExcmJaYk6",
                         "id": "iQwSYDdExcmJaYk6"
                     },
                     "attributeContractFulfillment": {
@@ -2117,7 +2154,7 @@
                         "extendedAttributes": []
                     },
                     "accessTokenManagerRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/accessTokenManagers/adminATM",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/accessTokenManagers/adminATM",
                         "id": "adminATM"
                     }
                 },
@@ -2166,13 +2203,13 @@
                             "binaryAttributeSettings": {},
                             "searchScope": "SUBTREE",
                             "dataStoreRef": {
-                                "location": "https://eab662c10965:9999/pf-admin-api/v1/dataStores/LDAP-C29DCC21274C10A483A76237675C3A22715D638C",
+                                "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/dataStores/LDAP-C29DCC21274C10A483A76237675C3A22715D638C",
                                 "id": "LDAP-C29DCC21274C10A483A76237675C3A22715D638C"
                             },
                             "description": "ldap",
                             "id": "ldap",
                             "type": "LDAP",
-                            "baseDn": "ou=people,dc=example,dc=com",
+                            "baseDn": "ou=people,${USER_BASE_DN}",
                             "searchFilter": "entryUUID=${sub}"
                         }],
                         "issuanceCriteria": {"conditionalCriteria": []}
@@ -2240,7 +2277,7 @@
                         ]
                     },
                     "accessTokenManagerRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/accessTokenManagers/obATM",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/accessTokenManagers/obATM",
                         "id": "obATM"
                     }
                 }
@@ -2251,7 +2288,7 @@
             "operationType": "SAVE",
             "items": [{
                 "defaultPolicyRef": {
-                    "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/openIdConnect/policies/obOIDCPolicy",
+                    "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/openIdConnect/policies/obOIDCPolicy",
                     "id": "obOIDCPolicy"
                 },
                 "sessionSettings": {
@@ -2331,7 +2368,7 @@
                 "name": "cdrAURegister",
                 "id": "cdrAURegister",
                 "pluginDescriptorRef": {
-                    "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/clientRegistrationPolicies/descriptors/com.pingidentity.clientregistration.CDRAUPlugin",
+                    "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/clientRegistrationPolicies/descriptors/com.pingidentity.clientregistration.CDRAUPlugin",
                     "id": "com.pingidentity.clientregistration.CDRAUPlugin"
                 }
             }],
@@ -2345,7 +2382,7 @@
                     "requireSignedRequests": true,
                     "persistentGrantIdleTimeoutType": "SERVER_DEFAULT",
                     "policyRefs": [{
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/clientRegistrationPolicies/cdrAURegister",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/clientRegistrationPolicies/cdrAURegister",
                         "id": "cdrAURegister"
                     }],
                     "cibaRequireSignedRequests": false,
@@ -2364,7 +2401,7 @@
                     "deviceFlowSettingType": "SERVER_DEFAULT",
                     "disableRegistrationAccessTokens": true,
                     "defaultAccessTokenManagerRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/accessTokenManagers/obATM",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/accessTokenManagers/obATM",
                         "id": "obATM"
                     },
                     "requireProofKeyForCodeExchange": false,
@@ -2447,7 +2484,7 @@
                 {
                     "context": {
                         "contextRef": {
-                            "location": "https://eab662c10965:9999/pf-admin-api/v1/authenticationPolicyContracts/TkNJ3HMIIvIeeZEM",
+                            "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/authenticationPolicyContracts/TkNJ3HMIIvIeeZEM",
                             "id": "TkNJ3HMIIvIeeZEM"
                         },
                         "type": "AUTHENTICATION_POLICY_CONTRACT"
@@ -2460,14 +2497,14 @@
                     "attributeSources": [],
                     "issuanceCriteria": {"conditionalCriteria": []},
                     "accessTokenManagerRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/accessTokenManagers/adminATM",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/accessTokenManagers/adminATM",
                         "id": "adminATM"
                     }
                 },
                 {
                     "context": {
                         "contextRef": {
-                            "location": "https://eab662c10965:9999/pf-admin-api/v1/authenticationPolicyContracts/iQwSYDdExcmJaYk6",
+                            "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/authenticationPolicyContracts/iQwSYDdExcmJaYk6",
                             "id": "iQwSYDdExcmJaYk6"
                         },
                         "type": "AUTHENTICATION_POLICY_CONTRACT"
@@ -2490,7 +2527,7 @@
                     "attributeSources": [],
                     "issuanceCriteria": {"conditionalCriteria": []},
                     "accessTokenManagerRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/accessTokenManagers/obATM",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/accessTokenManagers/obATM",
                         "id": "obATM"
                     }
                 },
@@ -2514,7 +2551,7 @@
                     "attributeSources": [],
                     "issuanceCriteria": {"conditionalCriteria": []},
                     "accessTokenManagerRef": {
-                        "location": "https://eab662c10965:9999/pf-admin-api/v1/oauth/accessTokenManagers/obATM",
+                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/oauth/accessTokenManagers/obATM",
                         "id": "obATM"
                     }
                 }
@@ -2534,7 +2571,7 @@
                 "name": "adminSelector",
                 "id": "adminSelector",
                 "pluginDescriptorRef": {
-                    "location": "https://eab662c10965:9999/pf-admin-api/v1/authenticationSelectors/descriptors/com.pingidentity.pf.selectors.ExtendedPropertyAuthnSelector",
+                    "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/authenticationSelectors/descriptors/com.pingidentity.pf.selectors.ExtendedPropertyAuthnSelector",
                     "id": "com.pingidentity.pf.selectors.ExtendedPropertyAuthnSelector"
                 },
                 "attributeContract": {"extendedAttributes": [{"name": "true"}]}
@@ -2578,7 +2615,7 @@
                                             "issuanceCriteria": {"conditionalCriteria": []}
                                         },
                                         "authenticationPolicyContractRef": {
-                                            "location": "https://eab662c10965:9999/pf-admin-api/v1/authenticationPolicyContracts/TkNJ3HMIIvIeeZEM",
+                                            "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/authenticationPolicyContracts/TkNJ3HMIIvIeeZEM",
                                             "id": "TkNJ3HMIIvIeeZEM"
                                         },
                                         "context": "Success",
@@ -2589,7 +2626,7 @@
                                     "authenticationSource": {
                                         "type": "IDP_ADAPTER",
                                         "sourceRef": {
-                                            "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/htmlFormAdapterAdministrators",
+                                            "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/htmlFormAdapterAdministrators",
                                             "id": "htmlFormAdapterAdministrators"
                                         }
                                     },
@@ -2599,7 +2636,7 @@
                             }],
                             "action": {
                                 "authenticationSelectorRef": {
-                                    "location": "https://eab662c10965:9999/pf-admin-api/v1/authenticationSelectors/adminSelector",
+                                    "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/authenticationSelectors/adminSelector",
                                     "id": "adminSelector"
                                 },
                                 "type": "AUTHN_SELECTOR"
@@ -2729,7 +2766,7 @@
                                                                 "issuanceCriteria": {"conditionalCriteria": []}
                                                             },
                                                             "authenticationPolicyContractRef": {
-                                                                "location": "https://eab662c10965:9999/pf-admin-api/v1/authenticationPolicyContracts/iQwSYDdExcmJaYk6",
+                                                                "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/authenticationPolicyContracts/iQwSYDdExcmJaYk6",
                                                                 "id": "iQwSYDdExcmJaYk6"
                                                             },
                                                             "context": "Success",
@@ -2740,7 +2777,7 @@
                                                         "authenticationSource": {
                                                             "type": "IDP_ADAPTER",
                                                             "sourceRef": {
-                                                                "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/cdrConsentAdapter",
+                                                                "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/cdrConsentAdapter",
                                                                 "id": "cdrConsentAdapter"
                                                             }
                                                         },
@@ -2760,7 +2797,7 @@
                                                 "authenticationSource": {
                                                     "type": "IDP_ADAPTER",
                                                     "sourceRef": {
-                                                        "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/clickatellAdapter",
+                                                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/clickatellAdapter",
                                                         "id": "clickatellAdapter"
                                                     }
                                                 },
@@ -2780,7 +2817,7 @@
                                         "authenticationSource": {
                                             "type": "IDP_ADAPTER",
                                             "sourceRef": {
-                                                "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/identityFirstAdapter",
+                                                "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/identityFirstAdapter",
                                                 "id": "identityFirstAdapter"
                                             }
                                         },
@@ -2827,7 +2864,7 @@
                                                 "issuanceCriteria": {"conditionalCriteria": []}
                                             },
                                             "authenticationPolicyContractRef": {
-                                                "location": "https://eab662c10965:9999/pf-admin-api/v1/authenticationPolicyContracts/iQwSYDdExcmJaYk6",
+                                                "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/authenticationPolicyContracts/iQwSYDdExcmJaYk6",
                                                 "id": "iQwSYDdExcmJaYk6"
                                             },
                                             "context": "Success",
@@ -2838,7 +2875,7 @@
                                         "authenticationSource": {
                                             "type": "IDP_ADAPTER",
                                             "sourceRef": {
-                                                "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/identityFirstAdapter",
+                                                "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/identityFirstAdapter",
                                                 "id": "identityFirstAdapter"
                                             }
                                         },
@@ -2851,7 +2888,7 @@
                                 "authenticationSource": {
                                     "type": "IDP_ADAPTER",
                                     "sourceRef": {
-                                        "location": "https://eab662c10965:9999/pf-admin-api/v1/idp/adapters/cdrSelectorAdapter",
+                                        "location": "https://pingfederate-admin-56bbf7d86b-tn4cl:9999/pf-admin-api/v1/idp/adapters/cdrSelectorAdapter",
                                         "id": "cdrSelectorAdapter"
                                     }
                                 },
