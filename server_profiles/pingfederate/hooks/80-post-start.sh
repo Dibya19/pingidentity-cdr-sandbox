@@ -15,6 +15,7 @@ then
     curl -X PUT --header 'Content-Type: application/json' --header 'X-XSRF-Header: PingFederate' --data '@/opt/staging/hooks/licenseagree.json' https://localhost:9999/pf-admin-api/v1/license/agreement --insecure
     curl -X POST --header 'Content-Type: application/json' --header 'X-XSRF-Header: PingFederate' --data '@/opt/staging/hooks/createadmin.json' https://localhost:9999/pf-admin-api/v1/administrativeAccounts --insecure
     curl -X POST --basic -u Administrator:2FederateM0re --header 'Content-Type: application/json' --header 'X-XSRF-Header: PingFederate' --header 'X-BypassExternalValidation: true' --data '@/opt/out/instance/import-bulkconfig.json' https://localhost:9999/pf-admin-api/v1/bulk/import?failFast=false --insecure
+    rm /opt/out/instance/import-bulkconfig.json
     
     if test "${OPERATIONAL_MODE}" = "CLUSTERED_CONSOLE"
     then
