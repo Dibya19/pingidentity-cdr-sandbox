@@ -859,7 +859,7 @@
                         "allowedClients": []
                     },
                     "attributeContract": {
-                        "defaultSubjectAttribute": "cdr_arrangement_id",
+                        "defaultSubjectAttribute": "sub",
                         "coreAttributes": [],
                         "extendedAttributes": [
                             {"name": "sub"},
