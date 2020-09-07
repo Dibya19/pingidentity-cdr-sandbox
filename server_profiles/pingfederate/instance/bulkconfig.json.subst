@@ -84,7 +84,10 @@
             "operationType": "SAVE",
             "subResource": "org.sourceid.oauth20.handlers.process.exchange.execution.SecurityTokenCreator",
             "items": [{
-                "listValue": [],
+                "listValue": [
+                    "org.sourceid.wstrust.processor.oauth.BearerAccessTokenTokenProcessor",
+                    "org.sourceid.wstrust.processor.jwt.JWTTokenProcessor"
+                ],
                 "id": "base64-required-plugins",
                 "type": "LIST"
             }],
@@ -261,7 +264,7 @@
                 {
                     "hostnamesTags": [{
                         "defaultSource": true,
-                        "hostnames": []
+                        "hostnames": ["pingdirectory"]
                     }],
                     "timeBetweenEvictions": 60000,
                     "binaryAttributes": [],
@@ -279,7 +282,7 @@
                     "bindAnonymously": false,
                     "maxWait": -1,
                     "verifyHost": true,
-                    "hostnames": [],
+                    "hostnames": ["pingdirectory"],
                     "dnsTtl": 60000,
                     "useSsl": false,
                     "maskAttributeValues": false,
@@ -371,7 +374,12 @@
             "operationType": "SAVE",
             "items": [{
                 "password": "${administrativeAccounts_items_Administrator_password}",
-                "roles": [],
+                "roles": [
+                    "USER_ADMINISTRATOR",
+                    "ADMINISTRATOR",
+                    "CRYPTO_ADMINISTRATOR",
+                    "EXPRESSION_ADMINISTRATOR"
+                ],
                 "auditor": false,
                 "description": "Initial administrator user.",
                 "active": true,
@@ -391,7 +399,12 @@
         },
         {
             "operationType": "SAVE",
-            "items": [{"virtualHostNames": []}],
+            "items": [{"virtualHostNames": [
+                "sso-admin.pingapac.com",
+                "sso.pingapac.com",
+                "pingfederate",
+                "pingaccess"
+            ]}],
             "resourceType": "/virtualHostNames"
         },
         {
@@ -1763,7 +1776,7 @@
                 "authorizationCodeEntropy": 30,
                 "persistentGrantIdleTimeout": -1,
                 "rollRefreshTokenValues": true,
-                "allowedOrigins": [],
+                "allowedOrigins": ["https://test.pingapac.com"],
                 "allowUnidentifiedClientExtensionGrants": false,
                 "devicePollingInterval": 5,
                 "persistentGrantIdleTimeoutTimeUnit": "DAYS",
@@ -1772,7 +1785,26 @@
                 "exclusiveScopeGroups": [{
                     "name": "DEEPTHOUGHT:ADMIN",
                     "description": "Provide all Deepthought admin rights",
-                    "scopes": []
+                    "scopes": [
+                        "DEEPTHOUGHT:ADMIN:BRANCH:WRITE",
+                        "DEEPTHOUGHT:ADMIN:PAYEE:WRITE",
+                        "DEEPTHOUGHT:ADMIN:SCHEDULED_PAYMENT:READ",
+                        "DEEPTHOUGHT:ADMIN:SCHEDULED_PAYMENT:WRITE",
+                        "DEEPTHOUGHT:ADMIN:CUSTOMER:WRITE",
+                        "DEEPTHOUGHT:ADMIN:TRANSACTION:WRITE",
+                        "DEEPTHOUGHT:ADMIN:GRANT:WRITE",
+                        "DEEPTHOUGHT:ADMIN:PAYEE:READ",
+                        "DEEPTHOUGHT:ADMIN:CUSTOMER:READ",
+                        "DEEPTHOUGHT:ADMIN:PRODUCT:WRITE",
+                        "DEEPTHOUGHT:ADMIN:PRODUCT:READ",
+                        "DEEPTHOUGHT:ADMIN:DIRECT_DEBIT:WRITE",
+                        "DEEPTHOUGHT:ADMIN:BANK_ACCOUNT:READ",
+                        "DEEPTHOUGHT:ADMIN:BRANCH:READ",
+                        "DEEPTHOUGHT:ADMIN:BANK_ACCOUNT:WRITE",
+                        "DEEPTHOUGHT:ADMIN:DIRECT_DEBIT:READ",
+                        "DEEPTHOUGHT:ADMIN:TRANSACTION:READ",
+                        "DEEPTHOUGHT:ADMIN:GRANT:READ"
+                    ]
                 }],
                 "userAuthorizationConsentPageSetting": "INTERNAL",
                 "bypassActivationCodeConfirmation": false,
@@ -2170,7 +2202,16 @@
                         "issuanceCriteria": {"conditionalCriteria": []}
                     },
                     "name": "obOIDCPolicy",
-                    "scopeAttributeMappings": {"openid": {"values": []}},
+                    "scopeAttributeMappings": {"openid": {"values": [
+                        "acr",
+                        "auth_time",
+                        "family_name",
+                        "given_name",
+                        "name",
+                        "refresh_token_expires_at",
+                        "sharing_expires_at",
+                        "updated_at"
+                    ]}},
                     "returnIdTokenOnRefreshGrant": true,
                     "id": "obOIDCPolicy",
                     "includeSriInIdToken": false,
@@ -2333,7 +2374,16 @@
                     }],
                     "cibaRequireSignedRequests": false,
                     "restrictCommonScopes": false,
-                    "allowedExclusiveScopes": [],
+                    "allowedExclusiveScopes": [
+                        "bank:accounts.basic:read",
+                        "bank:accounts.detail:read",
+                        "bank:payees:read",
+                        "bank:regular_payments:read",
+                        "bank:transactions:read",
+                        "cdr:registration",
+                        "common:customer.basic:read",
+                        "common:customer.detail:read"
+                    ],
                     "enforceReplayPrevention": true,
                     "deviceFlowSettingType": "SERVER_DEFAULT",
                     "disableRegistrationAccessTokens": true,
