@@ -36,6 +36,16 @@
                     "type": "STRING"
                 },
                 {
+                    "stringValue": "",
+                    "id": "CONSENT_API_PASSWORD",
+                    "type": "STRING"
+                },
+                {
+                    "stringValue": "",
+                    "id": "CONSENT_API_USERNAME",
+                    "type": "STRING"
+                },
+                {
                     "stringValue": "https://pingdirectory",
                     "id": "CONSENT_API_HOST",
                     "type": "STRING"
