@@ -21,7 +21,7 @@
                     "type": "STRING"
                 },
                 {
-                    "stringValue": "pf_grant_mgt",
+                    "stringValue": "4d0e7a24-0782-31ed-a771-fbab54df5d10",
                     "id": "CONSENT_API_CLIENTID",
                     "type": "STRING"
                 },
