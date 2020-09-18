@@ -25,7 +25,7 @@
     Default web.xml file.
     This file is applied to a Web application before it's own WEB_INF/web.xml file
   </description>
-
+<!--
   <filter>
     <filter-name>PARAuthorizationEndpoint</filter-name>
     <filter-class>com.pingidentity.cdr.par.PARAuthorizationParamFilter</filter-class>
@@ -47,7 +47,7 @@
     <filter-name>PARAuthorizationEndpoint</filter-name>
     <url-pattern>/as/authorization.oauth2</url-pattern>
   </filter-mapping>
-
+-->
   <!-- ==================================================================== -->
   <!-- Removes static references to beans from javax.el.BeanELResolver to   -->
   <!-- ensure webapp classloader can be released on undeploy                -->
@@ -325,7 +325,7 @@
 
 
 
-
+<!--
   <servlet>
     <servlet-name>PARRequest</servlet-name>
     <servlet-class>com.pingidentity.cdr.par.PARRequestServlet</servlet-class>
@@ -347,7 +347,7 @@
     <servlet-name>PARRequest</servlet-name>
     <url-pattern>/as/par.oauth2</url-pattern>
   </servlet-mapping>
-
+-->
 
 
 
