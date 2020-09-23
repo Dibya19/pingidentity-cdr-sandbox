@@ -56,7 +56,7 @@
                     "type": "STRING"
                 },
                 {
-                    "stringValue": "500",
+                    "stringValue": "10",
                     "id": "HTTP_MAX_CONNECTIONS",
                     "type": "STRING"
                 }
