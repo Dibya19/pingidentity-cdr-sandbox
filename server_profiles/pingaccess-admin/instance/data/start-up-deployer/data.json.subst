@@ -212,24 +212,6 @@
             },
             {
                 "configuration": {
-                    "rejectionHandler": "1",
-                    "errorResponseTemplateFile": "policy.error.page.template.html",
-                    "errorResponseContentType": "text/html; charset=UTF-8",
-                    "groovyScript": "import java.util.Base64\nimport com.fasterxml.jackson.databind.JsonNode\nimport com.fasterxml.jackson.databind.ObjectMapper\n\n\nif(!exc?.response && getRequestParameter(exc?.request, \"request\") != null)\n{\n  def requestJwt = getRequestParameter(exc?.request, \"request\");\n  \n  def challengeMethod = getJwtTokenClaim(requestJwt, \"code_challenge_method\");\n  \n  // Removing S256 code challenge validation however it may come later\n  \n  // enforce S256 challenge method\n  //if(challengeMethod && challengeMethod.equalsIgnoreCase(\"S256\"))\n  //{\n  \tcopyRequestObjectParameters(exc?.request, requestJwt, \"code_challenge\");\n  \tcopyRequestObjectParameters(exc?.request, requestJwt, \"code_challenge_method\");\n  //}\n  //else\n  //{\n  //\tclearRequestObjectParameters(exc?.request, \"code_challenge\");\n  //\tclearRequestObjectParameters(exc?.request, \"code_challenge_method\");\n  //}\n  \n}\n\nanything();\n\nvoid clearRequestObjectParameters(def request, def paramName)\n{\n  if(request?.method?.methodName?.equalsIgnoreCase(\"POST\"))\n  {\n    def bodyStr = new String(request?.body?.getContent());\n    bodyStr = bodyStr?.replaceAll(paramName + \"=\", paramName + \"_old=\");\n    request?.setBodyContent(bodyStr.getBytes());\n  }\n  else\n  {\n    def delimiter = '?';\n    if(request?.uri.contains('?'))\n      delimiter = '&';\n\n    def newUri = request?.uri.replaceAll(paramName + \"=\", paramName + \"_old=\");    \n    request?.setUri(newUri);\n  }\n}\n\nvoid copyRequestObjectParameters(def request, def requestJwt, def paramName)\n{\n  if(getJwtTokenClaim(requestJwt, paramName) == null)\n  \treturn;\n  \n  if(request?.method?.methodName?.equalsIgnoreCase(\"POST\"))\n  {\n    def bodyStr = new String(request?.body?.getContent());\n    bodyStr = bodyStr?.replaceAll(paramName + \"=\", paramName + \"_old=\");\n    bodyStr = bodyStr + \"&\" + paramName + \"=\" + getJwtTokenClaim(requestJwt, paramName);\n    request?.setBodyContent(bodyStr.getBytes());\n  }\n  else\n  {\n    def delimiter = '?';\n    if(request?.uri.contains('?'))\n      delimiter = '&';\n\n    def newUri = request?.uri.replaceAll(paramName + \"=\", paramName + \"_old=\");    \n    request?.setUri(newUri + delimiter + paramName + \"=\" + getJwtTokenClaim(requestJwt, paramName));\n  }\n}\n\nString getRequestParameter(def request, def paramName)\n{\n  def paramValue = null;\n  if(request?.method?.methodName?.equalsIgnoreCase(\"POST\"))\n  \tparamValue = getPostParameter(request, paramName);\n  else\n    paramValue = getQueryParameter(request, paramName);\n  \n  return paramValue;\n}\n\nString getQueryParameter(def request, def paramName)\n{\n  def params = request?.getQueryStringParams();\n  \n  if(params == null)\n    return null;\n  \n  if(!params.containsKey(paramName))\n    return null;\n  \n  return params.get(paramName)[0];\n}\n\nString getPostParameter(def request, def paramName)\n{\n  def params = request?.getPostParams();\n  \n  if(params == null)\n    return null;\n  \n  if(!params.containsKey(paramName))\n    return null;\n  \n  return params.get(paramName)[0];\n}\n\nString getJwtTokenClaim(String jwt, String claim)\n{\n    def jwtSplit = jwt.split(\"\\\\.\");\n    if(jwtSplit.length != 3)\n      return null;\n  \n    def jwtBodyEncoded = jwtSplit[1];\n    def jwtBody = new String(Base64.getDecoder().decode(jwtBodyEncoded));\n  \n    return getClaimValue(jwtBody, claim);\n}\n\nString getClaimValue(String responseStr, String jsonPath)\n{\n    ObjectMapper mapper = new ObjectMapper();       \n    JsonNode resultObject = mapper.readTree(responseStr);\n\n    String [] splitJsonPath = jsonPath.split(\"\\\\.\");\n\n    for(String path : splitJsonPath)\n    {\n        resultObject = resultObject.findPath(path);\n    }\n\n    return resultObject.textValue();\n\n}",
-                    "rejectionHandlingEnabled": true,
-                    "errorResponseCode": 403,
-                    "errorResponseStatusMsg": "Forbidden"
-                },
-                "name": "FAPI Conformance - Fix PKCE",
-                "className": "com.pingidentity.pa.policy.GroovyPolicyInterceptor",
-                "id": 7,
-                "supportedDestinations": [
-                    "Site",
-                    "Agent"
-                ]
-            },
-            {
-                "configuration": {
                     "rejectionHandler": "5",
                     "errorResponseTemplateFile": "policy.error.page.template.html",
                     "errorResponseContentType": "text/html; charset=UTF-8",
@@ -241,6 +223,42 @@
                 "name": "MTLS-RequireClientAuthAlways",
                 "className": "com.pingidentity.pa.policy.GroovyPolicyInterceptor",
                 "id": 8,
+                "supportedDestinations": [
+                    "Site",
+                    "Agent"
+                ]
+            },
+            {
+                "configuration": {
+                    "rejectionHandler": "1",
+                    "errorResponseTemplateFile": "policy.error.page.template.html",
+                    "errorResponseContentType": "text/html; charset=UTF-8",
+                    "groovyScript": "import java.util.Base64\nimport com.fasterxml.jackson.databind.JsonNode\nimport com.fasterxml.jackson.databind.ObjectMapper\n\n\nif(!exc?.response && getRequestParameter(exc?.request, \"request\") != null)\n{\n  def requestJwt = getRequestParameter(exc?.request, \"request\");\n  \n  copyRequestObjectParameters(exc?.request, requestJwt, \"client_id\");\n  copyRequestObjectParameters(exc?.request, requestJwt, \"response_type\");\n}\n\nanything();\n\nvoid clearRequestObjectParameters(def request, def paramName)\n{\n  if(request?.method?.methodName?.equalsIgnoreCase(\"POST\"))\n  {\n    def bodyStr = new String(request?.body?.getContent());\n    bodyStr = bodyStr?.replaceAll(paramName + \"=\", paramName + \"_old=\");\n    request?.setBodyContent(bodyStr.getBytes());\n  }\n  else\n  {\n    def delimiter = '?';\n    if(request?.uri.contains('?'))\n      delimiter = '&';\n\n    def newUri = request?.uri.replaceAll(paramName + \"=\", paramName + \"_old=\");    \n    request?.setUri(newUri);\n  }\n}\n\nvoid copyRequestObjectParameters(def request, def requestJwt, def paramName)\n{\n  if(getJwtTokenClaim(requestJwt, paramName) == null)\n  \treturn;\n  \n  if(request?.method?.methodName?.equalsIgnoreCase(\"POST\"))\n  {\n    def bodyStr = new String(request?.body?.getContent());\n    bodyStr = bodyStr?.replaceAll(paramName + \"=\", paramName + \"_old=\");\n    bodyStr = bodyStr + \"&\" + paramName + \"=\" + getJwtTokenClaim(requestJwt, paramName);\n    request?.setBodyContent(bodyStr.getBytes());\n  }\n  else\n  {\n    def delimiter = '?';\n    if(request?.uri.contains('?'))\n      delimiter = '&';\n\n    def newUri = request?.uri.replaceAll(paramName + \"=\", paramName + \"_old=\");    \n    request?.setUri(newUri + delimiter + paramName + \"=\" + getJwtTokenClaim(requestJwt, paramName));\n  }\n}\n\nString getRequestParameter(def request, def paramName)\n{\n  def paramValue = null;\n  if(request?.method?.methodName?.equalsIgnoreCase(\"POST\"))\n  \tparamValue = getPostParameter(request, paramName);\n  else\n    paramValue = getQueryParameter(request, paramName);\n  \n  return paramValue;\n}\n\nString getQueryParameter(def request, def paramName)\n{\n  def params = request?.getQueryStringParams();\n  \n  if(params == null)\n    return null;\n  \n  if(!params.containsKey(paramName))\n    return null;\n  \n  return params.get(paramName)[0];\n}\n\nString getPostParameter(def request, def paramName)\n{\n  def params = request?.getPostParams();\n  \n  if(params == null)\n    return null;\n  \n  if(!params.containsKey(paramName))\n    return null;\n  \n  return params.get(paramName)[0];\n}\n\nString getJwtTokenClaim(String jwt, String claim)\n{\n    def jwtSplit = jwt.split(\"\\\\.\");\n    if(jwtSplit.length != 3)\n      return null;\n  \n    def jwtBodyEncoded = jwtSplit[1];\n    def jwtBody = new String(Base64.getDecoder().decode(jwtBodyEncoded));\n  \n    return getClaimValue(jwtBody, claim);\n}\n\nString getClaimValue(String responseStr, String jsonPath)\n{\n    ObjectMapper mapper = new ObjectMapper();       \n    JsonNode resultObject = mapper.readTree(responseStr);\n\n    String [] splitJsonPath = jsonPath.split(\"\\\\.\");\n\n    for(String path : splitJsonPath)\n    {\n        resultObject = resultObject.findPath(path);\n    }\n\n    return resultObject.textValue();\n\n}",
+                    "rejectionHandlingEnabled": true,
+                    "errorResponseCode": 403,
+                    "errorResponseStatusMsg": "Forbidden"
+                },
+                "name": "FAPI - Copy Request Object Claims to Params",
+                "className": "com.pingidentity.pa.policy.GroovyPolicyInterceptor",
+                "id": 9,
+                "supportedDestinations": [
+                    "Site",
+                    "Agent"
+                ]
+            },
+            {
+                "configuration": {
+                    "rejectionHandler": "1",
+                    "errorResponseTemplateFile": "policy.error.page.template.html",
+                    "errorResponseContentType": "text/html; charset=UTF-8",
+                    "groovyScript": "if(exc?.response && exc?.response?.statusCode == 400)\n{\n  def bodyStr = new String(exc?.response?.body?.content);\n  bodyStr = bodyStr.replace(\"unsupported_response_type\", \"invalid_request\");\n  exc?.response?.setBodyContent(bodyStr.getBytes());\n}\nelse\n{\n  anything();\n}",
+                    "rejectionHandlingEnabled": true,
+                    "errorResponseCode": 403,
+                    "errorResponseStatusMsg": "Forbidden"
+                },
+                "name": "FAPI - Rewrite error response",
+                "className": "com.pingidentity.pa.policy.GroovyPolicyInterceptor",
+                "id": 10,
                 "supportedDestinations": [
                     "Site",
                     "Agent"
@@ -800,35 +818,14 @@
                             "type": "Rule"
                         },
                         {
-                            "id": 7,
+                            "id": 9,
+                            "type": "Rule"
+                        },
+                        {
+                            "id": 10,
                             "type": "Rule"
                         }
                     ],
-                    "API": []
-                }
-            },
-            {
-                "pathPrefixes": ["/as/authorization.oauth2"],
-                "methods": ["*"],
-                "auditLevel": "ON",
-                "defaultAuthTypeOverride": "Web",
-                "enabled": true,
-                "rootResource": false,
-                "name": "Authorization Endpoint",
-                "anonymous": false,
-                "queryParamConfig": null,
-                "id": 17,
-                "pathPatterns": [{
-                    "pattern": "/as/authorization.oauth2",
-                    "type": "WILDCARD"
-                }],
-                "unprotected": false,
-                "applicationId": 1,
-                "policy": {
-                    "Web": [{
-                        "id": 7,
-                        "type": "Rule"
-                    }],
                     "API": []
                 }
             },
@@ -1002,22 +999,22 @@
         },
         "keyPairs": [
             {
-                "password": "${_data_keyPairs_5_Generated_ADMIN_password}",
-                "fileData": "${_data_keyPairs_5_Generated_ADMIN_fileData}",
+                "password": "${_data_keyPairs_5_Generated__ADMIN_password}",
+                "fileData": "${_data_keyPairs_5_Generated__ADMIN_fileData}",
                 "alias": "Generated: ADMIN",
                 "hsmProviderId": 0,
                 "id": 5
             },
             {
-                "password": "${_data_keyPairs_7_Generated_AGENT_password}",
-                "fileData": "${_data_keyPairs_7_Generated_AGENT_fileData}",
+                "password": "${_data_keyPairs_7_Generated__AGENT_password}",
+                "fileData": "${_data_keyPairs_7_Generated__AGENT_fileData}",
                 "alias": "Generated: AGENT",
                 "hsmProviderId": 0,
                 "id": 7
             },
             {
-                "password": "${_data_keyPairs_8_Generated_ENGINE_password}",
-                "fileData": "${_data_keyPairs_8_Generated_ENGINE_fileData}",
+                "password": "${_data_keyPairs_8_Generated__ENGINE_password}",
+                "fileData": "${_data_keyPairs_8_Generated__ENGINE_fileData}",
                 "alias": "Generated: ENGINE",
                 "hsmProviderId": 0,
                 "id": 8
@@ -1089,7 +1086,7 @@
                 "destination": "Site",
                 "description": "",
                 "allowEmptyPathSegments": false,
-                "agentCacheInvalidatedExpiration": 1599729853987,
+                "agentCacheInvalidatedExpiration": 1600832947687,
                 "enabled": true,
                 "agentCacheInvalidatedResponseDuration": 900,
                 "issuer": null,
@@ -1110,7 +1107,7 @@
                 "name": "PingFederate-Application",
                 "siteId": 1,
                 "realm": null,
-                "lastModified": 1599728953987,
+                "lastModified": 1600832047687,
                 "accessValidatorId": 0,
                 "caseSensitivePath": false
             },
@@ -1126,7 +1123,7 @@
                 "destination": "Site",
                 "description": "",
                 "allowEmptyPathSegments": false,
-                "agentCacheInvalidatedExpiration": 1599727455769,
+                "agentCacheInvalidatedExpiration": 1600394376526,
                 "enabled": true,
                 "agentCacheInvalidatedResponseDuration": 900,
                 "issuer": null,
@@ -1150,7 +1147,7 @@
                 "name": "Deepthought Product Admin Service",
                 "siteId": 4,
                 "realm": null,
-                "lastModified": 1599726555769,
+                "lastModified": 1600393476526,
                 "accessValidatorId": 1,
                 "caseSensitivePath": false
             },
@@ -1167,7 +1164,7 @@
                 "destination": "Site",
                 "description": "",
                 "allowEmptyPathSegments": false,
-                "agentCacheInvalidatedExpiration": 1599728032656,
+                "agentCacheInvalidatedExpiration": 1600394376571,
                 "enabled": true,
                 "agentCacheInvalidatedResponseDuration": 900,
                 "issuer": null,
@@ -1197,7 +1194,7 @@
                 "name": "Deepthought Product API",
                 "siteId": 5,
                 "realm": null,
-                "lastModified": 1599727132656,
+                "lastModified": 1600393476571,
                 "accessValidatorId": 1,
                 "caseSensitivePath": false
             },
@@ -1214,7 +1211,7 @@
                 "destination": "Site",
                 "description": "",
                 "allowEmptyPathSegments": false,
-                "agentCacheInvalidatedExpiration": 1599728032656,
+                "agentCacheInvalidatedExpiration": 1600394376622,
                 "enabled": true,
                 "agentCacheInvalidatedResponseDuration": 900,
                 "issuer": null,
@@ -1244,7 +1241,7 @@
                 "name": "Deepthought Bank API",
                 "siteId": 6,
                 "realm": null,
-                "lastModified": 1599727132656,
+                "lastModified": 1600393476622,
                 "accessValidatorId": 1,
                 "caseSensitivePath": false
             },
@@ -1257,7 +1254,7 @@
                 "destination": "Site",
                 "description": "",
                 "allowEmptyPathSegments": false,
-                "agentCacheInvalidatedExpiration": 1599727455837,
+                "agentCacheInvalidatedExpiration": 1600394376608,
                 "enabled": true,
                 "agentCacheInvalidatedResponseDuration": 900,
                 "issuer": null,
@@ -1278,7 +1275,7 @@
                 "name": "CDR Register",
                 "siteId": 7,
                 "realm": null,
-                "lastModified": 1599726555837,
+                "lastModified": 1600393476608,
                 "accessValidatorId": 0,
                 "caseSensitivePath": false
             },
@@ -1291,7 +1288,7 @@
                 "destination": "Site",
                 "description": "",
                 "allowEmptyPathSegments": false,
-                "agentCacheInvalidatedExpiration": 1599727455885,
+                "agentCacheInvalidatedExpiration": 1600394376648,
                 "enabled": true,
                 "agentCacheInvalidatedResponseDuration": 900,
                 "issuer": null,
@@ -1312,7 +1309,7 @@
                 "name": "PingDirectory-Web",
                 "siteId": 8,
                 "realm": null,
-                "lastModified": 1599726555885,
+                "lastModified": 1600393476648,
                 "accessValidatorId": 0,
                 "caseSensitivePath": false
             }
@@ -1323,5 +1320,5 @@
             "keyRollPeriodInHours": 24
         }
     },
-    "version": "6.1.0.3"
+    "version": "6.1.1.0"
 }
