@@ -12,6 +12,7 @@
     <c:item name="CONSENT_API_USERNAME">cn=consent service account</c:item>
     <c:item name="CONSENT_API_PASSWORD">2FederateM0re</c:item>
     <c:item name="HTTP_IGNORE_SSL">true</c:item>
-    <c:item name="HTTP_MAX_CONNECTIONS">500</c:item>
+    <c:item name="HTTP_MAX_CONNECTIONS">10</c:item>
+    <c:item name="HTTP_IDLE_TIMEOUT">500</c:item>
 
 </c:config>
