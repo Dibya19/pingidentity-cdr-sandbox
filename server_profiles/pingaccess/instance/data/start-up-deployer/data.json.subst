@@ -98,13 +98,6 @@
                 "useServerCipherSuiteOrder": true,
                 "id": 3,
                 "keyPairId": 7
-            },
-            {
-                "restartRequired": false,
-                "name": "CONFIG QUERY",
-                "useServerCipherSuiteOrder": true,
-                "id": 4,
-                "keyPairId": 5
             }
         ],
         "rules": [
