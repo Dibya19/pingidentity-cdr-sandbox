@@ -1020,6 +1020,15 @@
                 "url": "https://acme-staging-v02.api.letsencrypt.org/directory"
             }
         ],
+        "identityMappings": [{
+            "configuration": {
+                "headerClientCertificateMappings": [],
+                "attributeHeaderMappings": []
+            },
+            "name": "Default Identity Mapping",
+            "className": "com.pingidentity.pa.identitymappings.HeaderIdentityMapping",
+            "id": 1
+        }],
         "pingFederateOAuth": {
             "clientId": "pingaccess_validator",
             "tokenTimeToLiveSeconds": -1,
