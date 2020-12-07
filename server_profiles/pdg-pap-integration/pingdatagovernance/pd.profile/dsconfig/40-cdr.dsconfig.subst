@@ -37,7 +37,7 @@ dsconfig create-token-resource-lookup-method \
 #    --set 'match-filter:entryuuid eq "%sub%"' 
 
 dsconfig create-external-server \
-    --server-name "Deepthought Bank API"  \
+    --server-name "Bank API"  \
     --type api  \
     --set base-url:http://deepthought-bank-api:8081  \
     --set hostname-verification-method:allow-all  \
@@ -48,7 +48,7 @@ dsconfig create-gateway-api-endpoint \
     --set "access-token-validator:pingfederate token validator"  \
     --set inbound-base-path:/cds-au/v1/banking  \
     --set outbound-base-path:/cds-au/v1/banking  \
-    --set "api-server:Deepthought Bank API" 
+    --set "api-server:Bank API" 
 
 dsconfig create-gateway-api-endpoint \
     --endpoint-name ConsentAPI  \
