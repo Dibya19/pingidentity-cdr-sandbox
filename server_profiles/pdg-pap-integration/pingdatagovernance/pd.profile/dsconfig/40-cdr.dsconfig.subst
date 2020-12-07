@@ -21,20 +21,20 @@ dsconfig create-token-resource-lookup-method \
     --set scim-resource-type:Users  \
     --set 'match-filter:uid eq "%sub%"'
 
-dsconfig create-access-token-validator \
-    --validator-name "Local JWT Access Token Validator"  \
-    --type jwt  \
-    --set enabled:true  \
-    --set authorization-server:pingfederate-http  \
-    --set jwks-endpoint-path:/ext/cdrJWKS 
+#dsconfig create-access-token-validator \
+#    --validator-name "Local JWT Access Token Validator"  \
+#    --type jwt  \
+#    --set enabled:true  \
+#    --set authorization-server:pingfederate-http  \
+#    --set jwks-endpoint-path:/ext/cdrJWKS 
 
-dsconfig create-token-resource-lookup-method \
-    --validator-name "Local JWT Access Token Validator"  \
-    --method-name users-by-entryuuid  \
-    --type scim  \
-    --set evaluation-order-index:100  \
-    --set scim-resource-type:Users  \
-    --set 'match-filter:entryuuid eq "%sub%"' 
+#dsconfig create-token-resource-lookup-method \
+#    --validator-name "Local JWT Access Token Validator"  \
+#    --method-name users-by-entryuuid  \
+#    --type scim  \
+#    --set evaluation-order-index:100  \
+#    --set scim-resource-type:Users  \
+#    --set 'match-filter:entryuuid eq "%sub%"' 
 
 dsconfig create-external-server \
     --server-name "Deepthought Bank API"  \
@@ -45,7 +45,7 @@ dsconfig create-external-server \
 
 dsconfig create-gateway-api-endpoint \
     --endpoint-name BankingAPI  \
-    --set "access-token-validator:Local JWT Access Token Validator"  \
+    --set "access-token-validator:pingfederate token validator"  \
     --set inbound-base-path:/cds-au/v1/banking  \
     --set outbound-base-path:/cds-au/v1/banking  \
     --set "api-server:Deepthought Bank API" 
