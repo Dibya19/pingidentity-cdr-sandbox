@@ -102,7 +102,6 @@ services:
 #      - SERVER_PROFILE_URL=https://github.com/ttranatping/refresh-token-management.git
 #      - SERVER_PROFILE_PATH=simple-sync/pingdatasync
       - SERVER_PROFILE_PATH=server_profiles/pingdatasync
-      - USER_BASE_DN=o=sync
     env_file:
       - ${HOME}/.pingidentity/devops
       - cdr.env
@@ -152,13 +151,13 @@ services:
     volumes:
        - ${HOME}/projects/devops/volumes/cdr.mockregister:/tmp/cache
 
-#  pingdataconsole:
-#    image: pingidentity/pingdataconsole:edge
-#    ports:
-#      - "8443:8443"
-#    networks:
-#      - pingnet-internal
-#      - pingnet-dmz
+  pingdataconsole:
+    image: pingidentity/pingdataconsole:edge
+    ports:
+      - "8443:8443"
+    networks:
+      - pingnet-internal
+      - pingnet-dmz
 
 networks:
     pingnet-internal:

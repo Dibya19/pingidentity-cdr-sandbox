@@ -389,18 +389,18 @@
                 "maxConnections": -1
             },
             {
-                "trustedCertificateGroupId": 0,
+                "trustedCertificateGroupId": 2,
                 "loadBalancingStrategyId": 0,
                 "maxWebSocketConnections": -1,
                 "keepAliveTimeout": 0,
                 "useTargetHostHeader": false,
                 "siteAuthenticatorIds": [],
                 "useProxy": false,
-                "secure": false,
+                "secure": true,
                 "sendPaCookie": true,
-                "targets": ["mock-dh-api:6879"],
+                "targets": ["pingdatagovernance:443"],
                 "expectedHostname": null,
-                "skipHostnameVerification": false,
+                "skipHostnameVerification": true,
                 "name": "mock-dh-api",
                 "id": 10,
                 "availabilityProfileId": 1,
@@ -1020,26 +1020,6 @@
                 "url": "https://acme-staging-v02.api.letsencrypt.org/directory"
             }
         ],
-        "identityMappings": [{
-            "configuration": {
-                "headerClientCertificateMappings": [],
-                "attributeHeaderMappings": [
-                    {
-                        "headerName": "X-USER",
-                        "subject": true,
-                        "attributeName": "sub"
-                    },
-                    {
-                        "headerName": "X-ACCOUNTS",
-                        "subject": false,
-                        "attributeName": "accounts"
-                    }
-                ]
-            },
-            "name": "Default Identity Mapping",
-            "className": "com.pingidentity.pa.identitymappings.HeaderIdentityMapping",
-            "id": 1
-        }],
         "pingFederateOAuth": {
             "clientId": "pingaccess_validator",
             "tokenTimeToLiveSeconds": -1,
