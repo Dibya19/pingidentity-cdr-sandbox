@@ -389,7 +389,7 @@
                 "maxConnections": -1
             },
             {
-                "trustedCertificateGroupId": 2,
+                "trustedCertificateGroupId": 0,
                 "loadBalancingStrategyId": 0,
                 "maxWebSocketConnections": -1,
                 "keepAliveTimeout": 0,
@@ -398,9 +398,9 @@
                 "useProxy": false,
                 "secure": false,
                 "sendPaCookie": true,
-                "targets": ["pingdatagovernance:443"],
+                "targets": ["mock-dh-api:6879"],
                 "expectedHostname": null,
-                "skipHostnameVerification": true,
+                "skipHostnameVerification": false,
                 "name": "mock-dh-api",
                 "id": 10,
                 "availabilityProfileId": 1,
@@ -1023,21 +1023,23 @@
         "identityMappings": [{
             "configuration": {
                 "headerClientCertificateMappings": [],
-                "attributeHeaderMappings": []
+                "attributeHeaderMappings": [
+                    {
+                        "headerName": "X-USER",
+                        "subject": true,
+                        "attributeName": "sub"
+                    },
+                    {
+                        "headerName": "X-ACCOUNTS",
+                        "subject": false,
+                        "attributeName": "accounts"
+                    }
+                ]
             },
             "name": "Default Identity Mapping",
             "className": "com.pingidentity.pa.identitymappings.HeaderIdentityMapping",
             "id": 1
-        },
-            { "configuration": {
-                "headerClientCertificateMappings": [],
-                "attributeHeaderMappings": []
-            },
-            "name": "Default Identity Mapping",
-            "className": "com.pingidentity.pa.identitymappings.HeaderIdentityMapping",
-            "id": 0
-            }
-	],
+        }],
         "pingFederateOAuth": {
             "clientId": "pingaccess_validator",
             "tokenTimeToLiveSeconds": -1,
