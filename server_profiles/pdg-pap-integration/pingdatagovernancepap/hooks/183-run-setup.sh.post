@@ -4,6 +4,12 @@
 #
 ${VERBOSE} && set -x
 
+FILE=configuration.yml
+SRC_DIR=/opt/staging
+SRC_FILE=${SRC_DIR}/${FILE}
+DEST_DIR=${SERVER_ROOT_DIR}/config
+DEST_FILE=${DEST_DIR}/${FILE}
+
 echo "Moving configuration.yml file"
-mv /opt/in/tmp/configuration.yml /opt/out/instance/config/configuration.yml
-cat /opt/out/instance/config/configuration.yml
+cp ${SRC_FILE} ${DEST_FILE}
+cat ${DEST_FILE}
