@@ -3,6 +3,7 @@
 # Ping Identity DevOps - Docker Build Hooks
 #
 ${VERBOSE} && set -x
+exit 0
 
 FILES="configuration.yml keystore.p12"
 for FILE in ${FILES}
@@ -12,7 +13,6 @@ do
   DEST_DIR=${SERVER_ROOT_DIR}/config
   DEST_FILE=${DEST_DIR}/${FILE}
 
-  echo "Moving ${SRC_FILE} to ${DEST_FILE}"
+  echo "Copying ${SRC_FILE} to ${DEST_FILE}"
   cp ${SRC_FILE} ${DEST_FILE}
-#cat ${DEST_FILE}
 done
