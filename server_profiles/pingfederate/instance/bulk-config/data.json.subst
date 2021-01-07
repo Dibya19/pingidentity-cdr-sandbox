@@ -21,7 +21,7 @@
                     "type": "STRING"
                 },
                 {
-                    "stringValue": "281b10b0-b641-3ab6-a615-cce280595446",
+                    "stringValue": "administrator",
                     "id": "CONSENT_API_CLIENTID",
                     "type": "STRING"
                 },
@@ -2571,7 +2571,7 @@
                     "context": {"type": "CLIENT_CREDENTIALS"},
                     "attributeContractFulfillment": {"sub": {
                         "source": {"type": "TEXT"},
-                        "value": "281b10b0-b641-3ab6-a615-cce280595446"
+                        "value": "administrator"
                     }},
                     "id": "client_credentials|adminATM",
                     "attributeSources": [],
