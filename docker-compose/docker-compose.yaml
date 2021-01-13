@@ -149,13 +149,13 @@ services:
     volumes:
        - ${HOME}/projects/devops/volumes/cdr.mockregister:/tmp/cache
 
-#  pingdataconsole:
-#    image: pingidentity/pingdataconsole:edge
-#    ports:
-#      - "8443:8443"
-#    networks:
-#      - pingnet-internal
-#      - pingnet-dmz
+  pingdataconsole:
+    image: pingidentity/pingdataconsole:edge
+    ports:
+      - "8443:8443"
+    networks:
+      - pingnet-internal
+      - pingnet-dmz
 
 networks:
     pingnet-internal:
