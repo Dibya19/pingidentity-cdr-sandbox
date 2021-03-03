@@ -1,6 +1,21 @@
+
 dsconfig set-trust-manager-provider-prop \
     --provider-name 'Blind Trust'  \
     --set enabled:true
+
+dsconfig create-access-token-validator \
+    --validator-name mock-atv  \
+    --type mock  \
+    --set enabled:true  \
+    --set evaluation-order-index:1
+
+dsconfig create-token-resource-lookup-method \
+    --validator-name mock-atv  \
+    --method-name users-by-uid  \
+    --type scim  \
+    --set evaluation-order-index:100  \
+    --set scim-resource-type:Users  \
+    --set 'match-filter:uid eq "%sub%"'
 
 dsconfig create-external-server \
 	--server-name pingdatagovernancepap \
