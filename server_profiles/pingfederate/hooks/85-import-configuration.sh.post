@@ -9,8 +9,6 @@
 # shellcheck source=../../../../pingcommon/opt/staging/hooks/pingcommon.lib.sh
 . "${HOOKS_DIR}/pingcommon.lib.sh"
 
-${HOOKS_DIR}/86-install-ca.sh
-
 echo "INFO: OPERATIONAL_MODE: ${OPERATIONAL_MODE}"
 if test -n "${OPERATIONAL_MODE}" && test "${OPERATIONAL_MODE}" = "STANDALONE"
 then
@@ -18,3 +16,4 @@ then
     ip link set eth0 up
 fi
 
+${HOOKS_DIR}/86-install-ca.sh
