@@ -33,7 +33,7 @@
 
         <Console name="CONSOLE" target="SYSTEM_OUT">
 <!--            <PatternLayout pattern="%d{ABSOLUTE} %-5p [%c{1}] %m%n" />-->
-        	<JsonLayout complete="true" compact="true" eventEol="true">
+        	<JsonLayout complete="false" compact="true" eventEol="true">
         	</JsonLayout>
         </Console>
 
