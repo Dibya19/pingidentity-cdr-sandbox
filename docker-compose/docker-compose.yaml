@@ -203,6 +203,7 @@ services:
       - pingnet-internal
     volumes:
        - ${HOME}/projects/devops/volumes/cdr.mockregister.20210304:/tmp/cache
+       - ./datarecipients:/tmp/docker-cache/datarecipients
 
 
   pingdatagovernance:
