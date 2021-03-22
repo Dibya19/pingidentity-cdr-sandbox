@@ -47,10 +47,10 @@ services:
       - ~/.pingidentity/devops
       - cdr.env
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.dev.open-banking.aws.cua"
+      - "pingaccess:mockregister.dev.open-banking.aws.cua"
+      - "pingaccess:pd.dev.open-banking.aws.cua"
+      - "pingaccess:api.dev.open-banking.aws.cua"
     ports:
       - 8082:7879
     networks:
@@ -65,10 +65,10 @@ services:
       - ~/.pingidentity/devops
       - cdr.env
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.dev.open-banking.aws.cua"
+      - "pingaccess:mockregister.dev.open-banking.aws.cua"
+      - "pingaccess:pd.dev.open-banking.aws.cua"
+      - "pingaccess:api.dev.open-banking.aws.cua"
     ports:
       - 6879:6879
     networks:
@@ -93,10 +93,10 @@ services:
     cap_add:
       - NET_ADMIN
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.dev.open-banking.aws.cua"
+      - "pingaccess:mockregister.dev.open-banking.aws.cua"
+      - "pingaccess:pd.dev.open-banking.aws.cua"
+      - "pingaccess:api.dev.open-banking.aws.cua"
     volumes:
       - ./licenses/pingfederate.lic:/opt/in/instance/server/default/conf/pingfederate.lic
     #  - ./pingfederate-out:/opt/out
@@ -115,10 +115,10 @@ services:
       - ~/.pingidentity/devops
       - cdr.env
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.dev.open-banking.aws.cua"
+      - "pingaccess:mockregister.dev.open-banking.aws.cua"
+      - "pingaccess:pd.dev.open-banking.aws.cua"
+      - "pingaccess:api.dev.open-banking.aws.cua"
     ports:
       - "3389:1389"
       - "3443:1443"
@@ -157,10 +157,10 @@ services:
         soft: 65535
         hard: 65535
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.dev.open-banking.aws.cua"
+      - "pingaccess:mockregister.dev.open-banking.aws.cua"
+      - "pingaccess:pd.dev.open-banking.aws.cua"
+      - "pingaccess:api.dev.open-banking.aws.cua"
     ports:
       - "2636:636"
       - "2443:443"
@@ -174,15 +174,15 @@ services:
     command: /tmp/wait-for pingdirectory:1389 -t 900 -- /tmp/wait-for pingaccess:443 -t 900 -- /tmp/hooks/start-service.sh
     environment:
       - VERBOSE=true
-      - SERVER_PROFILE_PATH=server_profiles/datarecipient/internal/config
+      - SERVER_PROFILE_PATH=server_profiles/datarecipient/cua/config
     env_file:
       - ~/.pingidentity/devops
       - cdr.env
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.dev.open-banking.aws.cua"
+      - "pingaccess:mockregister.dev.open-banking.aws.cua"
+      - "pingaccess:pd.dev.open-banking.aws.cua"
+      - "pingaccess:api.dev.open-banking.aws.cua"
     ports:
       - 8080:7878
     networks:
