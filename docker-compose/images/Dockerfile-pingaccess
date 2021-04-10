@@ -1,13 +1,10 @@
-FROM pingidentity/pingaccess:6.2.1-edge 
-
+FROM pingidentity/pingaccess:6.2.1-edge
+  
 ARG APKURL
 
 USER root
 
-RUN curl $APKURL --output apk.zip && tar -zxvf apk.zip 
-RUN ./sbin/apk.static -X http://dl-cdn.alpinelinux.org/alpine/latest-stable/main -U --allow-untrusted --initdb add apk-tools-static
-RUN ./sbin/apk.static update
-RUN ./sbin/apk.static -X http://dl-cdn.alpinelinux.org/alpine/latest-stable/main -U --allow-untrusted add apk-tools
+RUN curl $APKURL --output apk.zip && tar -zxvf apk.zip
 RUN ./sbin/apk.static update
 RUN ./sbin/apk.static add openssl
 
@@ -15,4 +12,4 @@ RUN rm -R ./sbin
 
 #leaving as root because the sandbox requires 443
 #not recommended for production
-#USER ping 
+#USER ping
