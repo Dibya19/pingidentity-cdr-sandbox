@@ -49,11 +49,11 @@ services:
     ports:
       - 8082:7879
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:sso-2.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.data-holder.anzi.ping-eng.com"
+      - "pingaccess:sso-2.data-holder.anzi.ping-eng.com"
+      - "pingaccess:mockregister.data-holder.anzi.ping-eng.com"
+      - "pingaccess:pd.data-holder.anzi.ping-eng.com"
+      - "pingaccess:api.data-holder.anzi.ping-eng.com"
       - "pingaccess:sso.internal"
       - "pingaccess:sso-2.internal"
     networks:
@@ -70,11 +70,11 @@ services:
     ports:
       - 6879:6879
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:sso-2.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.data-holder.anzi.ping-eng.com"
+      - "pingaccess:sso-2.data-holder.anzi.ping-eng.com"
+      - "pingaccess:mockregister.data-holder.anzi.ping-eng.com"
+      - "pingaccess:pd.data-holder.anzi.ping-eng.com"
+      - "pingaccess:api.data-holder.anzi.ping-eng.com"
       - "pingaccess:sso.internal"
       - "pingaccess:sso-2.internal"
     networks:
@@ -96,16 +96,16 @@ services:
       - 9999:9999
     networks:
       - pingnet-internal
-    cap_add:
-      - NET_ADMIN
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:sso-2.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.data-holder.anzi.ping-eng.com"
+      - "pingaccess:sso-2.data-holder.anzi.ping-eng.com"
+      - "pingaccess:mockregister.data-holder.anzi.ping-eng.com"
+      - "pingaccess:pd.data-holder.anzi.ping-eng.com"
+      - "pingaccess:api.data-holder.anzi.ping-eng.com"
       - "pingaccess:sso.internal"
       - "pingaccess:sso-2.internal"
+    cap_add:
+      - NET_ADMIN
 #    volumes:
 #      - ./licenses/pingfederate.lic:/opt/in/instance/server/default/conf/pingfederate.lic
     #  - ./pingfederate-out:/opt/out
@@ -139,11 +139,11 @@ services:
       - 636
       - 3636
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:sso-2.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.data-holder.anzi.ping-eng.com"
+      - "pingaccess:sso-2.data-holder.anzi.ping-eng.com"
+      - "pingaccess:mockregister.data-holder.anzi.ping-eng.com"
+      - "pingaccess:pd.data-holder.anzi.ping-eng.com"
+      - "pingaccess:api.data-holder.anzi.ping-eng.com"
       - "pingaccess:sso.internal"
       - "pingaccess:sso-2.internal"
 #    volumes:
@@ -172,11 +172,11 @@ services:
       - "2636:636"
       - "2443:443"
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:sso-2.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.data-holder.anzi.ping-eng.com"
+      - "pingaccess:sso-2.data-holder.anzi.ping-eng.com"
+      - "pingaccess:mockregister.data-holder.anzi.ping-eng.com"
+      - "pingaccess:pd.data-holder.anzi.ping-eng.com"
+      - "pingaccess:api.data-holder.anzi.ping-eng.com"
       - "pingaccess:sso.internal"
       - "pingaccess:sso-2.internal"
 #    volumes:
@@ -189,18 +189,18 @@ services:
     command: /tmp/wait-for pingdirectory:1389 -t 900 -- /tmp/wait-for pingaccess:443 -t 900 -- /tmp/hooks/start-service.sh
     environment:
       - VERBOSE=true
-      - SERVER_PROFILE_PATH=server_profiles/datarecipient/internal/config
+      - SERVER_PROFILE_PATH=server_profiles/datarecipient/anzi-demo/config
     env_file:
       - ~/.pingidentity/devops
       - cdr.env
     ports:
       - 8080:7878
     links:
-      - "pingaccess:sso.data-holder.local"
-      - "pingaccess:sso-2.data-holder.local"
-      - "pingaccess:mockregister.data-holder.local"
-      - "pingaccess:pd.data-holder.local"
-      - "pingaccess:api.data-holder.local"
+      - "pingaccess:sso.data-holder.anzi.ping-eng.com"
+      - "pingaccess:sso-2.data-holder.anzi.ping-eng.com"
+      - "pingaccess:mockregister.data-holder.anzi.ping-eng.com"
+      - "pingaccess:pd.data-holder.anzi.ping-eng.com"
+      - "pingaccess:api.data-holder.anzi.ping-eng.com"
       - "pingaccess:sso.internal"
       - "pingaccess:sso-2.internal"
     networks:
