@@ -14,9 +14,9 @@ export default {
   grantType: "authorization_code",
   // Specifies the URL that specifies the return entry point of the application. This is a required property.
   //redirectUri: "http://localhost:3001/",
-  redirectUri: "https://spa.data-recipient.local/index.html",
+  redirectUri: "https://spa.mybank.local/index.html",
   // Specifies an optional parameter that specifies the URL to which the browser is redirected after a logout has been performed.
-  logoutRedirectUri: "https://spa.data-recipient.local/",
+  logoutRedirectUri: "https://spa.mybank.local/",
   // Specifies permissions that determine the resources that the application can access. This parameter is not required, but it is needed to specify accessible resources.
   scope: "openid profile",
   // Specifies whether the user is prompted to login for re-authentication. The prompt parameter can be used as a way to check for existing authentication, verifying that the user is still present for the current session. For prompt=none, the user is never prompted to login to re-authenticate, which can result in an error if authentication is required. For prompt=login, if time since last login is greater than the max-age, then the current session is stashed away in the flow state and treated in the flow as if there was no previous existing session. When the flow completes, if the flow’s user is the same as the user from the stashed away session, the stashed away session is updated with the new flow data and persisted (preserving the existing session ID). If the flow’s user is not the same as the user from the stashed away session, the stashed away session is deleted (logout) and the new session is persisted.
@@ -30,22 +30,22 @@ export default {
 
   API_URI: 'https://api.pingone.com/v1',
   AUTH_URI: 'https://auth.pingone.com',
-  
+
   audience: "https://data-holder",
 
-  issuer: "https://sso.data-holder.local",
-  jwks_uri: "https://sso.data-holder.local/pf/JWKS",
-  authorization_endpoint: "https://sso.data-holder.local/as/authorization.oauth2",
-  token_endpoint: "https://sso.data-holder.local/as/token.oauth2",
-  userinfo_endpoint: "https://sso.data-holder.local/idp/userinfo.openid",
-  end_session_endpoint: "https://sso.data-holder.local/idp/startSLO.ping",
-  check_session_iframe: "https://sso.data-holder.local/idp/startSLO.ping",
-  revocation_endpoint: "https://sso.data-holder.local/idp/startSLO.ping",
-  introspection_endpoint: "https://sso.data-holder.local/as/introspect.oauth2",
+  issuer: "https://sso.mybank.local",
+  jwks_uri: "https://sso.mybank.local/pf/JWKS",
+  authorization_endpoint: "https://sso.mybank.local/as/authorization.oauth2",
+  token_endpoint: "https://sso.mybank.local/as/token.oauth2",
+  userinfo_endpoint: "https://sso.mybank.local/idp/userinfo.openid",
+  end_session_endpoint: "https://sso.mybank.local/idp/startSLO.ping",
+  check_session_iframe: "https://sso.mybank.local/idp/startSLO.ping",
+  revocation_endpoint: "https://sso.mybank.local/idp/startSLO.ping",
+  introspection_endpoint: "https://sso.mybank.local/as/introspect.oauth2",
 
   CDR_BANKS: [{
-    dh_id: "https://sso.data-holder.local:6443",
-    dh_api: "https://spa.data-recipient.local",
+    dh_id: "https://sso.mybank.local:6443",
+    dh_api: "https://spa.mybank.local",
     img: "anybank-logo.png",
     name: "AnyBank",
     linkname: "AnyBank",
@@ -53,8 +53,8 @@ export default {
     color: "#ff9900"
 },
 {
-    dh_id: "https://sso-2.data-holder.local:6443",
-    dh_api: "https://spa.data-recipient.local/sso-2",
+    dh_id: "https://sso-2.mybank.local:6443",
+    dh_api: "https://spa.mybank.local/sso-2",
     img: "genericbank-logo.png",
     name: "GenericBank",
     linkname: "GenericBank",
@@ -62,8 +62,8 @@ export default {
     color: "#ff9900"
 },
 {
-  dh_id: "https://sso.data-holder.local:6443",
-  dh_api: "https://spa.data-recipient.local",
+  dh_id: "https://sso.mybank.local:6443",
+  dh_api: "https://spa.mybank.local",
   img: "bx-logo-color.png",
   name: "BX Finance",
   linkname: "BX Finance",
@@ -71,8 +71,8 @@ export default {
   color: "#ff9900"
 },
 {
-    dh_id: "https://cba.data-holder.local",
-    dh_api: "https://spa.data-recipient.local",
+    dh_id: "https://cba.mybank.local",
+    dh_api: "https://spa.mybank.local",
     img: "cba-logo.png",
     name: "Commonwealth Bank of Australia",
     linkname: "Commonwealth Bank",
@@ -80,8 +80,8 @@ export default {
     color: "#ff9900"
 },
 {
-    dh_id: "https://wbc.data-holder.local",
-    dh_api: "https://spa.data-holder.local",
+    dh_id: "https://wbc.mybank.local",
+    dh_api: "https://spa.mybank.local",
     img: "westpac-logo.png",
     name: "Westpac Banking Corporation",
     linkname: "Westpac Bank",
@@ -89,8 +89,8 @@ export default {
     color: "#ff9900"
 },
 {
-    dh_id: "https://nab.data-holder.local",
-    dh_api: "https://spa.data-recipient.local",
+    dh_id: "https://nab.mybank.local",
+    dh_api: "https://spa.mybank.local",
     img: "nab-logo.png",
     name: "National Australia Bank",
     linkname: "NAB Bank",
@@ -98,8 +98,8 @@ export default {
     color: "#ff9900"
 },
 {
-    dh_id: "https://anz.data-holder.local",
-    dh_api: "https://spa.data-recipient.local",
+    dh_id: "https://anz.mybank.local",
+    dh_api: "https://spa.mybank.local",
     img: "anz-logo.png",
     name: "Australia and New Zealand Bank",
     linkname: "ANZ Bank",
@@ -107,8 +107,8 @@ export default {
     color: "#ff9900"
 },
 {
-    dh_id: "https://bendigo.data-holder.local",
-    dh_api: "https://spa.data-recipient.local",
+    dh_id: "https://bendigo.mybank.local",
+    dh_api: "https://spa.mybank.local",
     img: "bendigo-logo2.png",
     name: "Bendigo Bank",
     linkname: "Bendigo Bank",
@@ -117,4 +117,3 @@ export default {
 }]
 
 };
-
