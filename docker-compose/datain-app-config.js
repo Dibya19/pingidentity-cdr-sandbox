@@ -44,8 +44,9 @@ export default {
   introspection_endpoint: "https://sso.mybank.local/as/introspect.oauth2",
 
   CDR_BANKS: [{
+    id: "bankOne",
     dh_id: "https://sso.mybank.local:6443",
-    dh_api: "https://spa.mybank.local",
+    dh_api: "https://spa.mybank.local/sso-1",
     img: "anybank-logo.png",
     name: "AnyBank",
     linkname: "AnyBank",
@@ -53,6 +54,7 @@ export default {
     color: "#ff9900"
 },
 {
+    id: "bankTwo",
     dh_id: "https://sso-2.mybank.local:6443",
     dh_api: "https://spa.mybank.local/sso-2",
     img: "genericbank-logo.png",
